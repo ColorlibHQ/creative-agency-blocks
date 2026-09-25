@@ -14,7 +14,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'CREATIVE_AGENCY_VERSION', '1.0.0' );
+define( 'CREATIVE_AGENCY_VERSION', '1.0.1' );
 
 /**
  * Theme supports.

@@ -4,7 +4,7 @@ Contributors: colorlib
 Requires at least: 6.6
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: portfolio, blog, full-site-editing, block-patterns, block-styles, template-editing, wide-blocks, accessibility-ready, translation-ready, custom-colors, custom-menu, custom-logo, featured-images, threaded-comments, one-column, two-columns, right-sidebar, sticky-post, theme-options
@@ -160,6 +160,10 @@ https://www.pexels.com/license/.
   https://web.archive.org/web/20220811094218/https://unsplash.com/photos/MUZFKa_mttU
 
 == Changelog ==
+
+
+= 1.0.1 =
+* Update requests no longer name the site. WordPress's default User-Agent carries the site address; the update check and core's package download to updates.colorlib.com now send only the theme and WordPress versions, so the one-way site identifier is the only thing that tells installs apart.
 
 = 1.0.0 =
 * Initial release.
