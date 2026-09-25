@@ -1,0 +1,8 @@
+Picker line (the "what are you building" list on /wp/themes/):
+A design studio or creative agency
+
+Card blurb (the free themes grid):
+A design studio theme with a staggered project grid and a page for every project, a contact form built in, six colour palettes and a visitor dark mode.
+
+Card image: creative-agency-free-design-agency-wordpress-theme.jpg (1200x800, the home page's opening statement and studio film)
+Card image alt: Creative Agency WordPress theme home page, with the studio's opening statement above a photograph of the team and a play button

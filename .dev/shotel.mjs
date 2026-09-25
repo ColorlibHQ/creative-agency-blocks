@@ -1,0 +1,10 @@
+import { chromium } from 'playwright';
+const [,, url, sel, out, dark] = process.argv;
+const b = await chromium.launch(); const c = await b.newContext({ viewport:{width:1440,height:900} });
+await c.addCookies([{name:'playground_auto_login_already_happened',value:'1',domain:new URL(url).hostname,path:'/'}]);
+const p = await c.newPage(); await p.goto(url,{waitUntil:'networkidle'});
+if (dark) await p.evaluate(()=>document.documentElement.classList.add('creative-agency-dark'));
+const el = await p.$(sel); await el.scrollIntoViewIfNeeded(); await p.waitForTimeout(400);
+const bb = await el.boundingBox();
+await p.screenshot({ path: out, clip: { x: Math.max(0,bb.x-60), y: Math.max(0,bb.y-60), width: bb.width+120, height: bb.height+120 } });
+console.log(JSON.stringify(bb)); await b.close();

@@ -1,0 +1,38 @@
+<!-- wp:template-part {"slug":"header","area":"header","tagName":"header"} /-->
+
+<!-- wp:group {"tagName":"main","layout":{"type":"constrained"}} -->
+<main class="wp-block-group">
+	<!-- wp:pattern {"slug":"creative-agency/hidden-single-banner"} /-->
+	<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|80","bottom":"var:preset|spacing|90"}}},"layout":{"type":"constrained"}} -->
+	<div class="wp-block-group alignfull" style="padding-top:var(--wp--preset--spacing--80);padding-bottom:var(--wp--preset--spacing--90)">
+		<!-- wp:columns {"className":"creative-agency-with-sidebar","style":{"spacing":{"blockGap":{"top":"var:preset|spacing|40","left":"var:preset|spacing|40"}}}} -->
+		<div class="wp-block-columns creative-agency-with-sidebar">
+			<!-- wp:column {"width":"66.66%","className":"creative-agency-article","style":{"spacing":{"blockGap":"var:preset|spacing|40"}}} -->
+			<div class="wp-block-column creative-agency-article" style="flex-basis:66.66%">
+		<!-- wp:post-featured-image {"aspectRatio":"2/1"} /-->
+		<!-- wp:pattern {"slug":"creative-agency/hidden-post-meta"} /-->
+		<!-- wp:post-content {"className":"creative-agency-entry","layout":{"type":"default"}} /-->
+		<!-- wp:post-terms {"term":"post_tag","className":"creative-agency-tags"} /-->
+		<!-- wp:group {"className":"creative-agency-post-nav","layout":{"type":"flex","flexWrap":"wrap","justifyContent":"space-between"}} -->
+		<div class="wp-block-group creative-agency-post-nav">
+			<!-- wp:post-navigation-link {"type":"previous","label":"Previous post","showTitle":true,"linkLabel":true,"arrow":"arrow"} /-->
+			<!-- wp:post-navigation-link {"label":"Next post","showTitle":true,"linkLabel":true,"arrow":"arrow"} /-->
+		</div>
+		<!-- /wp:group -->
+		<!-- wp:pattern {"slug":"creative-agency/hidden-author-box"} /-->
+		<!-- wp:pattern {"slug":"creative-agency/hidden-comments"} /-->
+			</div>
+			<!-- /wp:column -->
+			<!-- wp:column {"width":"33.33%"} -->
+			<div class="wp-block-column" style="flex-basis:33.33%">
+				<!-- wp:template-part {"slug":"sidebar","area":"uncategorized"} /-->
+			</div>
+			<!-- /wp:column -->
+		</div>
+		<!-- /wp:columns -->
+	</div>
+	<!-- /wp:group -->
+</main>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer","area":"footer","tagName":"footer"} /-->

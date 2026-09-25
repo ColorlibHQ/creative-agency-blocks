@@ -1,0 +1,1983 @@
+/*
+Theme Name: Creative Agency
+Theme URI: https://colorlib.com/wp/themes/creative-agency/
+Author: Colorlib
+Author URI: https://colorlib.com/
+Description: A block theme for design studios, creative agencies and freelancers. A large opening statement, a staggered project grid with a page for every project, a black services band, client logos, counting figures, a studio photo strip and a contact form that needs no plugin — six colour palettes, five type pairings, visitor dark mode and WooCommerce support. Full site editing throughout.
+Requires at least: 6.6
+Tested up to: 7.1
+Requires PHP: 7.4
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Update URI: https://updates.colorlib.com/theme/creative-agency.json
+Text Domain: creative-agency
+Tags: portfolio, blog, full-site-editing, block-patterns, block-styles, template-editing, wide-blocks, accessibility-ready, translation-ready, custom-colors, custom-menu, custom-logo, featured-images, threaded-comments, one-column, two-columns, right-sidebar, sticky-post, theme-options
+
+Creative Agency WordPress Theme, (C) 2026 Colorlib.
+Creative Agency is distributed under the terms of the GNU GPL v2 or later.
+
+Creative Agency bundles the following third-party resources:
+
+Poppins and DM Sans
+License: SIL Open Font License 1.1, https://openfontlicense.org/
+Source: https://fontsource.org/
+
+Tabler Icons
+License: MIT, https://github.com/tabler/tabler-icons/blob/main/LICENSE
+Source: https://tabler.io/icons
+
+Photographs
+License: Unsplash License, https://unsplash.com/license
+Source: https://unsplash.com/
+*/
+
+/*
+ * A block theme styles itself from theme.json. What lives here is what
+ * theme.json cannot express: the components behind the block style variations
+ * registered in functions.php, the icons, the header's behaviour, the hover
+ * states, and the layout corrections a full-width design needs.
+ *
+ * This file is also the editor stylesheet (add_editor_style), so a card, a
+ * watermark or an icon looks the same while it is being edited.
+ *
+ * Every colour is a palette variable, which is what lets every palette, and
+ * dark mode, restyle every component. Never alias one into a custom property
+ * of our own on :root: dark mode redefines the palette on <body>, and an alias
+ * resolved on the root would keep the light value.
+ */
+
+/* ==========================================================================
+   Screen reader text
+   ========================================================================== */
+
+.screen-reader-text {
+	border: 0;
+	clip-path: inset(50%);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute !important;
+	width: 1px;
+	word-wrap: normal !important;
+}
+
+.screen-reader-text:focus {
+	background-color: var(--wp--preset--color--base);
+	clip-path: none;
+	color: var(--wp--preset--color--contrast);
+	display: block;
+	height: auto;
+	left: 6px;
+	padding: 15px 23px 14px;
+	top: 7px;
+	width: auto;
+	z-index: 100000;
+}
+
+/* ==========================================================================
+   Layout rhythm
+
+   WordPress separates the top-level pieces of a page — header, main, footer —
+   and every full-width section inside a page with the root block gap. On a
+   design built from bands that is a strip of bare page between each pair.
+   Sections carry their own padding, so they meet edge to edge instead.
+   ========================================================================== */
+
+.wp-site-blocks > * {
+	margin-block-start: 0;
+}
+
+.wp-block-post-content > .alignfull + .alignfull,
+main.wp-block-group > .alignfull + .alignfull,
+main.wp-block-group > .alignfull + .wp-block-post-content {
+	margin-block-start: 0;
+}
+
+/*
+ * A page built from sections needs no padding of its own. A page of ordinary
+ * paragraphs still needs room to breathe, so the page templates pad their
+ * content only where it does not start or end with a full-width section.
+ */
+.creative-agency-page-content:not(:has(> .alignfull:first-child)) {
+	padding-top: var(--wp--preset--spacing--70);
+}
+
+.creative-agency-page-content:not(:has(> .alignfull:last-child)) {
+	padding-bottom: var(--wp--preset--spacing--80);
+}
+
+/* The design sets no underline on its links; running text in a post or a
+   page keeps one, so a link is still told apart from the words around it. */
+a {
+	text-decoration: none;
+}
+
+.creative-agency-entry :where(p, li, td) a,
+.creative-agency-page-content > :where(p, ul, ol) a {
+	text-decoration: underline;
+	text-underline-offset: 0.2em;
+}
+
+/* ==========================================================================
+   Header
+
+   The site's initial in a blue tile flush with the top-left corner, the
+   navigation centred in the middle seven twelfths, and "Say hi" on a yellow
+   bar at the right — the design's own grid of 2 / 7 / 3. It sits in the page
+   flow over the white opening band, and once the visitor is 400px down
+   assets/js/interactions.js pins it to the top, where it turns black.
+   ========================================================================== */
+
+.creative-agency-header {
+	position: relative;
+	z-index: 99;
+	min-height: 100px;
+	gap: 0;
+	background-color: var(--wp--preset--color--base);
+	transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+@media (min-width: 992px) {
+	.creative-agency-header.is-layout-flex {
+		display: grid;
+		grid-template-columns: 2fr 7fr 3fr;
+		align-items: center;
+	}
+}
+
+.creative-agency-header.is-stuck {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	background-color: var(--wp--preset--color--dark);
+	box-shadow: 0 3px 16px rgb(0 0 0 / 0.1);
+	animation: creative-agency-slide-down 0.5s ease;
+}
+
+.admin-bar .creative-agency-header.is-stuck {
+	top: var(--wp-admin--admin-bar--height, 32px);
+}
+
+@keyframes creative-agency-slide-down {
+	from {
+		transform: translateY(-100%);
+	}
+
+	to {
+		transform: none;
+	}
+}
+
+/* The brand tile. The site title is set in the tile and only its first letter
+   shows, lower case, as the design's logo is; the full name stays in the
+   markup for screen readers and search engines. A site with a logo shows the
+   logo instead. */
+.creative-agency-brand {
+	flex: none;
+	align-self: start;
+	justify-content: center;
+	width: 100px;
+	height: 100px;
+	gap: 0;
+	background: linear-gradient(180deg,
+		color-mix(in srgb, var(--wp--preset--color--primary) 50%, var(--wp--preset--color--accent)),
+		color-mix(in srgb, var(--wp--preset--color--accent) 64%, white));
+}
+
+.creative-agency-brand .wp-block-site-title {
+	margin: 0;
+	font-size: 0;
+	line-height: 1;
+}
+
+.creative-agency-brand .wp-block-site-title a {
+	display: block;
+	padding: 0.25rem 0.5rem;
+	color: var(--wp--preset--color--overlay);
+	text-decoration: none;
+}
+
+.creative-agency-brand .wp-block-site-title a::first-letter {
+	font-size: 2.875rem;
+	font-weight: 600;
+	text-transform: lowercase;
+	color: var(--wp--preset--color--overlay);
+}
+
+.creative-agency-brand .wp-block-site-logo img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+
+.creative-agency-brand:has(.wp-block-site-logo img) {
+	background: none;
+}
+
+/* In the editor an empty logo block is an upload placeholder. It stays
+   clickable over the tile, so a logo can still be set there, but it does not
+   hide the initial. */
+.editor-styles-wrapper .creative-agency-brand {
+	position: relative;
+}
+
+.editor-styles-wrapper .creative-agency-brand .wp-block-site-logo:not(:has(img)) {
+	position: absolute !important;
+	inset: 0;
+	opacity: 0;
+	z-index: 1;
+}
+
+.creative-agency-brand:has(.wp-block-site-logo img) .wp-block-site-title {
+	display: none;
+}
+
+/* Navigation: the design's 15px links with a 4px bar that grows in under the
+   current page and on hover. */
+.creative-agency-header .wp-block-navigation {
+	font-size: 0.9375rem;
+	justify-content: center;
+}
+
+.creative-agency-header .wp-block-navigation__container {
+	gap: 0.9375rem;
+}
+
+@media (min-width: 1501px) {
+	.creative-agency-header .wp-block-navigation {
+		font-size: 1rem;
+	}
+
+	.creative-agency-header .wp-block-navigation__container {
+		gap: 3.125rem;
+	}
+}
+
+.creative-agency-header .wp-block-navigation-item__content {
+	color: var(--wp--preset--color--contrast);
+	transition: color 0.2s ease;
+}
+
+@media (min-width: 992px) {
+	.creative-agency-header .wp-block-navigation__container > .wp-block-navigation-item > .wp-block-navigation-item__content {
+		position: relative;
+		padding: 34px 0;
+	}
+
+	.creative-agency-header .wp-block-navigation__container > .wp-block-navigation-item > .wp-block-navigation-item__content::before {
+		content: "";
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: -4px;
+		height: 4px;
+		background-color: var(--wp--preset--color--accent);
+		opacity: 0;
+		transform: scaleX(0);
+		transition: transform 0.3s ease, opacity 0.3s ease;
+	}
+
+	.creative-agency-header .wp-block-navigation__container > .wp-block-navigation-item:is(:hover, :focus-within, .current-menu-item, .current-menu-ancestor) > .wp-block-navigation-item__content::before {
+		opacity: 1;
+		transform: scaleX(1);
+	}
+}
+
+/* The dropdown: a white panel with a whisper of shadow. */
+.creative-agency-header .wp-block-navigation__submenu-container {
+	min-width: 200px !important;
+	padding: 0.25rem 0;
+	border: 0 !important;
+	background-color: var(--wp--preset--color--base) !important;
+	box-shadow: 0 6px 18px rgb(0 0 0 / 0.08);
+}
+
+.creative-agency-header .wp-block-navigation__submenu-container .wp-block-navigation-item__content {
+	padding: 10px 15px !important;
+	color: var(--wp--preset--color--contrast) !important;
+}
+
+.creative-agency-header .wp-block-navigation__submenu-container .wp-block-navigation-item__content:hover {
+	color: var(--wp--preset--color--primary) !important;
+}
+
+/* Right-hand actions: Say hi, and the dark mode switch after it. */
+.creative-agency-header > .wp-block-buttons {
+	justify-content: flex-end;
+	gap: 1.25rem;
+	padding-right: 2rem;
+}
+
+.creative-agency-header .wp-block-button.creative-agency-scheme-toggle > .wp-block-button__link {
+	color: var(--wp--preset--color--contrast);
+}
+
+/* Pinned: black ground, white words. */
+.creative-agency-header.is-stuck .wp-block-navigation-item__content,
+.creative-agency-header.is-stuck .is-style-creative-agency-underline > .wp-block-button__link,
+.creative-agency-header.is-stuck .wp-block-button.creative-agency-scheme-toggle > .wp-block-button__link,
+.creative-agency-header.is-stuck .wp-block-navigation__responsive-container-open {
+	color: var(--wp--preset--color--overlay);
+}
+
+/*
+ * Below 992px the design turns the header into a blue bar with the menu
+ * button, and drops "Say hi". Core only collapses the navigation below 600px,
+ * and seven links need about 700, so the collapse is moved to where the
+ * header actually needs it.
+ */
+@media (max-width: 991px) {
+	.creative-agency-header {
+		min-height: 60px;
+		padding-right: var(--wp--preset--spacing--30);
+		background-color: var(--wp--preset--color--primary);
+	}
+
+	.creative-agency-header.is-stuck {
+		background-color: var(--wp--preset--color--primary);
+	}
+
+	.creative-agency-brand {
+		width: 60px;
+		height: 60px;
+	}
+
+	.creative-agency-brand .wp-block-site-title a::first-letter {
+		font-size: 2rem;
+	}
+
+	.creative-agency-header .wp-block-navigation {
+		margin-left: auto;
+	}
+
+	.creative-agency-header > .wp-block-buttons {
+		padding-right: 0;
+		gap: 0.25rem;
+	}
+
+	.creative-agency-header > .wp-block-buttons > .is-style-creative-agency-underline {
+		display: none;
+	}
+
+	.creative-agency-header .wp-block-navigation__responsive-container-open,
+	.creative-agency-header .wp-block-button.creative-agency-scheme-toggle > .wp-block-button__link,
+	.creative-agency-header.is-stuck .wp-block-button.creative-agency-scheme-toggle > .wp-block-button__link {
+		color: var(--wp--preset--color--on-primary);
+	}
+
+	.creative-agency-header .wp-block-navigation__responsive-container-open:not(.always-shown) {
+		display: flex;
+	}
+
+	.creative-agency-header .wp-block-navigation__responsive-container:not(.hidden-by-default):not(.is-menu-open) {
+		display: none;
+	}
+}
+
+/* The open menu is a full page: large links, the design's type. */
+.creative-agency-header .wp-block-navigation__responsive-container.is-menu-open {
+	background-color: var(--wp--preset--color--base) !important;
+	color: var(--wp--preset--color--contrast) !important;
+}
+
+.creative-agency-header .is-menu-open .wp-block-navigation-item__content {
+	padding: 0.35rem 0 !important;
+	font-size: var(--wp--preset--font-size--large);
+	color: var(--wp--preset--color--contrast) !important;
+}
+
+.creative-agency-header .is-menu-open .wp-block-navigation__submenu-container {
+	box-shadow: none;
+}
+
+/* ==========================================================================
+   The dark mode switch
+
+   Here rather than in scheme.css, which only loads on the front end: in the
+   editor the switch would otherwise be an empty blue pill. It is a core/button
+   with a class, drawn as a 44px round icon.
+   ========================================================================== */
+
+.wp-block-button.creative-agency-scheme-toggle > .wp-block-button__link {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	border: 0;
+	padding: 0;
+	/* 44px square: this is the one control on the page that is only an icon,
+	   and a 16px tap target is not a tap target. */
+	width: 44px;
+	height: 44px;
+	min-width: 0;
+	border-radius: 50%;
+	background-color: transparent;
+}
+
+/* Its colour is set where it sits (the header states one for each ground). */
+.wp-block-button.creative-agency-scheme-toggle > .wp-block-button__link:hover,
+.wp-block-button.creative-agency-scheme-toggle > .wp-block-button__link:focus-visible {
+	background-color: color-mix(in srgb, currentColor 12%, transparent);
+}
+
+.wp-block-button.creative-agency-scheme-toggle > .wp-block-button__link::before {
+	content: "";
+	width: 1.15em;
+	height: 1.15em;
+	flex: 0 0 auto;
+	background-color: currentColor;
+	/* A moon, and a sun in dark mode. Masked rather than an icon font or an
+	   inline SVG, so it takes the button's colour automatically and costs no
+	   extra request. */
+	-webkit-mask: var(--creative-agency-scheme-icon) center / contain no-repeat;
+	mask: var(--creative-agency-scheme-icon) center / contain no-repeat;
+	--creative-agency-scheme-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z'/%3E%3C/svg%3E");
+}
+
+.creative-agency-dark .wp-block-button.creative-agency-scheme-toggle > .wp-block-button__link::before {
+	--creative-agency-scheme-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='4'/%3E%3Cpath d='M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9 17 7M7 17l-2.1 2.1' stroke='black' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+
+/* ==========================================================================
+   Opening band: the large statement and its two floating shapes
+   ========================================================================== */
+
+.creative-agency-hero {
+	position: relative;
+	z-index: 0;
+	overflow: hidden;
+}
+
+/* A lilac circle upper left, a mint triangle lower right: the design's two
+   shapes, drawn from the palette so they follow every variation. */
+.creative-agency-hero::before,
+.creative-agency-hero::after {
+	content: "";
+	position: absolute;
+	z-index: -1;
+	pointer-events: none;
+}
+
+/*
+ * The design positions both shapes against a band that starts at the top of
+ * the page, under a header laid over it: 35% down and 30% up from the bottom.
+ * This band starts below a 100px header in the flow, so the same points are
+ * restated against it: 35% of (band + 100px) less the header, and so on.
+ */
+.creative-agency-hero::before {
+	top: calc(35% - 65px);
+	left: 10%;
+	width: 64px;
+	height: 64px;
+	border-radius: 50%;
+	background-color: color-mix(in srgb, var(--wp--preset--color--secondary) 18%, var(--wp--preset--color--base));
+}
+
+.creative-agency-hero::after {
+	right: calc(18% + 2px);
+	bottom: calc(30% + 30px);
+	width: 77px;
+	height: 77px;
+	clip-path: polygon(0 0, 100% 25%, 30% 100%);
+	background-color: color-mix(in srgb, var(--wp--preset--color--decor) 22%, var(--wp--preset--color--base));
+}
+
+@media (max-width: 767px) {
+	.creative-agency-hero::before {
+		top: 18%;
+		left: 6%;
+	}
+
+	.creative-agency-hero::after {
+		right: 6%;
+		bottom: 22%;
+	}
+}
+
+/* A long title stops short of the triangle, as the design's short ones do:
+   the right-hand fifth of a wide band is left to the shape. */
+.creative-agency-statement {
+	box-sizing: border-box;
+	padding-inline-end: max(0px, calc(min(100%, var(--wp--style--global--content-size)) - 900px));
+	margin: 0;
+	font-size: var(--wp--preset--font-size--colossal);
+	font-weight: 500;
+	line-height: 1.24;
+}
+
+/* Forced line breaks shape a title at desktop width and only get in the way
+   on a phone, as the design has it. */
+@media (max-width: 767px) {
+	.creative-agency-statement br,
+	.creative-agency-services h2 br {
+		display: none;
+	}
+}
+
+/* A project page's opening band is shorter at the bottom: the photograph
+   follows it closely, as the design's "minus-padd" band does. */
+.creative-agency-hero.creative-agency-hero--tight {
+	padding-bottom: var(--wp--preset--spacing--50) !important;
+}
+
+/* The design keeps 53px between the statement and the link beneath it. */
+.creative-agency-hero > .creative-agency-statement + * {
+	margin-block-start: 3.3rem;
+}
+
+.creative-agency-eyebrow {
+	margin: 0;
+	font-size: var(--wp--preset--font-size--small);
+	font-weight: 500;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+}
+
+/* ==========================================================================
+   Buttons
+
+   theme.json makes every button the design's pill. Two variations:
+   core's Outline (the "More projects" hairline pill that fills on hover), and
+   Underlined link (block style: core/button), a text link riding a yellow bar
+   — "Browse our work", "Say hi".
+   ========================================================================== */
+
+.wp-block-button.is-style-outline > .wp-block-button__link:not(.has-background) {
+	border: 1px solid currentColor;
+	background-color: transparent;
+	padding: 1.1875rem 3.375rem;
+	transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.wp-block-button.is-style-outline > .wp-block-button__link:not(.has-text-color) {
+	color: var(--wp--preset--color--primary);
+}
+
+.wp-block-button.is-style-outline > .wp-block-button__link:hover,
+.wp-block-button.is-style-outline > .wp-block-button__link:focus-visible {
+	border-color: var(--wp--preset--color--primary);
+	background-color: var(--wp--preset--color--primary);
+	color: var(--wp--preset--color--on-primary);
+}
+
+.wp-block-button.is-style-creative-agency-underline > .wp-block-button__link {
+	position: relative;
+	z-index: 0;
+	padding: 7px;
+	border: 0;
+	border-radius: 0;
+	background: none;
+	color: var(--wp--preset--color--contrast);
+	font-size: var(--wp--preset--font-size--medium);
+	font-weight: 400;
+}
+
+.wp-block-button.is-style-creative-agency-underline > .wp-block-button__link::before {
+	content: "";
+	position: absolute;
+	z-index: -1;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	height: 3px;
+	background-color: var(--wp--preset--color--highlight);
+	transition: height 0.25s ease;
+}
+
+.wp-block-button.is-style-creative-agency-underline > .wp-block-button__link:hover::before,
+.wp-block-button.is-style-creative-agency-underline > .wp-block-button__link:focus-visible::before {
+	height: 45%;
+}
+
+.has-dark-background-color .wp-block-button.is-style-creative-agency-underline > .wp-block-button__link {
+	color: var(--wp--preset--color--overlay);
+}
+
+/* ==========================================================================
+   Watermark  (block style: core/paragraph › Watermark)
+
+   The giant pale word behind a section title. It is decoration, hidden from
+   screen readers in functions.php, and like the design it goes below 992px,
+   where it would only crowd the title.
+   ========================================================================== */
+
+.is-style-creative-agency-watermark {
+	/* !important: the editor gives every block `position: relative` with a
+	   stronger selector, which dropped the word into the flow while editing. */
+	position: absolute !important;
+	z-index: -1;
+	top: 67px;
+	right: 0;
+	width: auto !important;
+	max-width: none !important;
+	margin: 0 !important;
+	font-size: 11.875rem;
+	font-weight: 900;
+	line-height: 1.2;
+	white-space: nowrap;
+	color: color-mix(in srgb, var(--wp--preset--color--contrast) 4%, var(--wp--preset--color--base));
+	pointer-events: none;
+	user-select: none;
+}
+
+:where(.wp-block-group):has(> .is-style-creative-agency-watermark) {
+	position: relative;
+	z-index: 0;
+	overflow: hidden;
+}
+
+/* It is out of the flow, so what follows it starts the section. */
+.is-style-creative-agency-watermark + * {
+	margin-block-start: 0 !important;
+}
+
+.has-dark-background-color > .is-style-creative-agency-watermark {
+	color: color-mix(in srgb, var(--wp--preset--color--overlay) 4%, var(--wp--preset--color--dark));
+}
+
+.is-style-creative-agency-watermark.creative-agency-watermark--centre {
+	top: 50%;
+	left: 0;
+	right: 0;
+	text-align: center;
+	transform: translateY(-50%);
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+	.is-style-creative-agency-watermark {
+		font-size: 8.75rem;
+	}
+}
+
+@media (max-width: 991px) {
+	.is-style-creative-agency-watermark {
+		display: none;
+	}
+}
+
+/* ==========================================================================
+   The studio film: a photograph with a round play button
+   ========================================================================== */
+
+.wp-block-cover.creative-agency-film {
+	min-height: clamp(460px, 47.2vw, 760px);
+	padding: 0;
+}
+
+/* Above 1500px the design sets the photograph in from the left. */
+@media (min-width: 1501px) {
+	.wp-block-cover.creative-agency-film {
+		margin-inline-start: 20vw !important;
+	}
+}
+
+/*
+ * The disc sits in a ring of the page colour. Over a busy photograph a blue
+ * disc alone can meet mid-tones of the same lightness and all but vanish, and
+ * a lifted blue in dark mode meets the bright walls; `primary` against `base`
+ * is the one pairing the palette audit guarantees at 3:1 everywhere. The ring
+ * is on the wrapper, so it is part of the page even while the link is being
+ * measured.
+ */
+.creative-agency-play {
+	position: relative;
+}
+
+.creative-agency-play::before {
+	content: "";
+	position: absolute;
+	inset: -8px;
+	border-radius: 50%;
+	background-color: var(--wp--preset--color--base);
+	opacity: 0.92;
+}
+
+.creative-agency-play > .wp-block-button__link {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 120px;
+	height: 120px;
+	padding: 0;
+	border: 0;
+	border-radius: 50%;
+	background-color: var(--wp--preset--color--primary);
+	color: var(--wp--preset--color--on-primary);
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.creative-agency-play > .wp-block-button__link::before {
+	content: "";
+	width: 18px;
+	height: 18px;
+	margin-left: 4px;
+	background-color: currentColor;
+	-webkit-mask: url("assets/icons/player-play.svg") center / contain no-repeat;
+	mask: url("assets/icons/player-play.svg") center / contain no-repeat;
+}
+
+.creative-agency-play > .wp-block-button__link:hover,
+.creative-agency-play > .wp-block-button__link:focus-visible {
+	transform: scale(1.06);
+	box-shadow: 0 0 0 12px color-mix(in srgb, var(--wp--preset--color--overlay) 35%, transparent);
+}
+
+@media (max-width: 767px) {
+	.creative-agency-play > .wp-block-button__link {
+		width: 80px;
+		height: 80px;
+	}
+}
+
+/* ==========================================================================
+   Works: two staggered columns of projects
+   ========================================================================== */
+
+.creative-agency-works__grid {
+	justify-content: space-between;
+}
+
+@media (min-width: 782px) {
+	.creative-agency-works__grid > .wp-block-column {
+		flex: 0 1 41.6667% !important;
+	}
+
+	/* The right-hand column starts 80px lower, which is what makes the grid
+	   read as a stagger rather than a table. */
+	.creative-agency-works__grid > .wp-block-column:last-child {
+		padding-top: 80px;
+	}
+}
+
+.creative-agency-work__media {
+	position: relative;
+	overflow: hidden;
+}
+
+.creative-agency-work__media .wp-block-image {
+	margin: 0;
+}
+
+.creative-agency-work__media .wp-block-image img {
+	display: block;
+	width: 100%;
+}
+
+/* On hover a blue wash slides in from the left and "View details" appears. */
+.creative-agency-work__media::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background-color: color-mix(in srgb, var(--wp--preset--color--accent) 22%, transparent);
+	opacity: 0;
+	transform: translateX(-30%);
+	transition: transform 0.5s ease, opacity 0.5s ease;
+	pointer-events: none;
+}
+
+.creative-agency-work__media > .wp-block-buttons {
+	position: absolute;
+	inset: 0;
+	z-index: 2;
+	margin: 0;
+	align-items: center;
+	justify-content: center;
+	visibility: hidden;
+	opacity: 0;
+	transform: translateX(-30%);
+	transition: transform 0.5s ease, opacity 0.5s ease, visibility 0.5s;
+}
+
+.creative-agency-work:hover .creative-agency-work__media::after,
+.creative-agency-work:focus-within .creative-agency-work__media::after,
+.creative-agency-work:hover .creative-agency-work__media > .wp-block-buttons,
+.creative-agency-work:focus-within .creative-agency-work__media > .wp-block-buttons {
+	visibility: visible;
+	opacity: 1;
+	transform: none;
+}
+
+.creative-agency-work__more > .wp-block-button__link {
+	padding: 0.75rem 1.25rem;
+	font-size: var(--wp--preset--font-size--medium);
+}
+
+/* The project title hangs off a yellow rule that climbs into the photograph. */
+.is-style-creative-agency-marked {
+	position: relative;
+	z-index: 3;
+	margin: 0;
+	padding: 29px 0 20px 68px;
+	font-size: var(--wp--preset--font-size--heading);
+	font-weight: 400;
+}
+
+.is-style-creative-agency-marked::before {
+	content: "";
+	position: absolute;
+	left: 36px;
+	bottom: 0;
+	width: 2px;
+	height: 125px;
+	background-color: var(--wp--preset--color--highlight);
+}
+
+.is-style-creative-agency-marked a {
+	color: inherit;
+	transition: color 0.2s ease;
+}
+
+.is-style-creative-agency-marked a:hover,
+.is-style-creative-agency-marked a:focus-visible {
+	color: var(--wp--preset--color--primary);
+}
+
+/* ==========================================================================
+   Services: outlined cards with a coloured round icon
+   (block style: core/group › Outlined card)
+   ========================================================================== */
+
+.is-style-creative-agency-card {
+	height: 100%;
+	box-sizing: border-box;
+	border: 1px solid var(--wp--preset--color--divider);
+	transition: border-color 0.3s ease;
+}
+
+.is-style-creative-agency-card:hover,
+.is-style-creative-agency-card:focus-within {
+	border-color: var(--wp--preset--color--muted);
+}
+
+.has-dark-background-color .is-style-creative-agency-card {
+	border-color: color-mix(in srgb, var(--wp--preset--color--overlay) 20%, var(--wp--preset--color--dark));
+}
+
+.has-dark-background-color .is-style-creative-agency-card:hover,
+.has-dark-background-color .is-style-creative-agency-card:focus-within {
+	border-color: color-mix(in srgb, var(--wp--preset--color--overlay) 50%, var(--wp--preset--color--dark));
+}
+
+.is-style-creative-agency-card h3 {
+	margin-block-start: 1.5rem;
+}
+
+.is-style-creative-agency-card h3 + p {
+	margin-block-start: 0.9rem;
+}
+
+/* The round icon. Its colour is a palette slug set by a modifier class, and
+   it fades to white at the bottom, as the design's gradient discs do. */
+.creative-agency-service__icon {
+	--creative-agency-disc: var(--wp--preset--color--primary);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 90px !important;
+	height: 90px;
+	margin-top: 0;
+	margin-bottom: 0;
+	border-radius: 50%;
+	background: linear-gradient(180deg, var(--creative-agency-disc), color-mix(in srgb, var(--creative-agency-disc) 62%, white));
+	color: var(--wp--preset--color--overlay);
+	font-size: 0;
+}
+
+.creative-agency-service__icon--secondary {
+	--creative-agency-disc: var(--wp--preset--color--secondary);
+}
+
+.creative-agency-service__icon--tertiary {
+	--creative-agency-disc: var(--wp--preset--color--tertiary);
+}
+
+.creative-agency-service__icon::before {
+	content: "";
+	width: 38px;
+	height: 38px;
+	background-color: currentColor;
+	-webkit-mask: var(--creative-agency-icon) center / contain no-repeat;
+	mask: var(--creative-agency-icon) center / contain no-repeat;
+}
+
+/* Client logos: grey marks that come up to full strength under the pointer. */
+.creative-agency-clients {
+	justify-content: space-between;
+}
+
+/* Under the service cards the design leaves 200px before the logos. */
+.creative-agency-services > .creative-agency-clients {
+	margin-block-start: var(--wp--preset--spacing--90) !important;
+}
+
+.creative-agency-clients .wp-block-image {
+	margin: 0;
+}
+
+.creative-agency-clients .wp-block-image img {
+	width: 72px;
+	height: 72px;
+	opacity: 0.75;
+	transition: opacity 0.3s ease;
+}
+
+.creative-agency-clients .wp-block-image:hover img {
+	opacity: 1;
+}
+
+@media (max-width: 781px) {
+	.creative-agency-clients {
+		justify-content: center;
+		gap: 2rem 3rem !important;
+	}
+}
+
+/* ==========================================================================
+   Story: a photograph beside a heading and a link
+   ========================================================================== */
+
+.creative-agency-split {
+	justify-content: space-between;
+}
+
+.creative-agency-split .wp-block-image {
+	margin: 0;
+}
+
+.creative-agency-split .wp-block-image img {
+	display: block;
+	width: 100%;
+}
+
+/* ==========================================================================
+   Quick facts: figures that count up
+   ========================================================================== */
+
+/* 50px at every width, as the design sets its figures. */
+.creative-agency-count {
+	margin: 0;
+	font-size: 3.125rem;
+	font-weight: 600;
+	line-height: 1.2;
+	font-variant-numeric: tabular-nums;
+}
+
+.creative-agency-facts .wp-block-column p {
+	font-weight: 400;
+}
+
+/* After the project grid the design pulls the figures up (its own
+   "minus_padding"): the grid's bottom padding is space enough. */
+.creative-agency-works + .creative-agency-facts {
+	padding-top: var(--wp--preset--spacing--50) !important;
+}
+
+/* ==========================================================================
+   Studio photographs: five across, edge to edge
+   ========================================================================== */
+
+.creative-agency-strip.wp-block-columns {
+	margin-block: 0;
+	gap: 0;
+}
+
+.creative-agency-strip .wp-block-image {
+	position: relative;
+	margin: 0;
+	overflow: hidden;
+}
+
+.creative-agency-strip .wp-block-image img {
+	display: block;
+	width: 100%;
+	transition: transform 0.5s ease;
+}
+
+.creative-agency-strip .wp-block-image::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background-color: color-mix(in srgb, var(--wp--preset--color--accent) 22%, transparent);
+	-webkit-mask: none;
+	opacity: 0;
+	transform: translateX(-80%);
+	transition: transform 0.5s ease, opacity 0.5s ease;
+	pointer-events: none;
+}
+
+.creative-agency-strip .wp-block-image::before {
+	content: "";
+	position: absolute;
+	z-index: 1;
+	top: 50%;
+	left: 50%;
+	width: 34px;
+	height: 34px;
+	margin: -17px 0 0 -17px;
+	background-color: var(--wp--preset--color--overlay);
+	-webkit-mask: url("assets/icons/zoom-in.svg") center / contain no-repeat;
+	mask: url("assets/icons/zoom-in.svg") center / contain no-repeat;
+	opacity: 0;
+	transition: opacity 0.5s ease;
+	pointer-events: none;
+}
+
+.creative-agency-strip .wp-block-image:hover img {
+	transform: scale(1.08);
+}
+
+.creative-agency-strip .wp-block-image:hover::after,
+.creative-agency-strip .wp-block-image:hover::before {
+	opacity: 1;
+	transform: none;
+}
+
+/* Two to a row on a phone rather than five full-screen photographs in a
+   column; the fifth takes the whole width. */
+@media (max-width: 781px) {
+	.creative-agency-strip.wp-block-columns {
+		flex-wrap: wrap !important;
+	}
+
+	.creative-agency-strip.wp-block-columns > .wp-block-column {
+		flex-basis: 50% !important;
+	}
+
+	.creative-agency-strip.wp-block-columns > .wp-block-column:last-child {
+		flex-basis: 100% !important;
+	}
+
+	.creative-agency-strip.wp-block-columns > .wp-block-column:last-child img {
+		aspect-ratio: 2 / 1 !important;
+	}
+}
+
+/* ==========================================================================
+   The band: one large link on the brand colour
+   ========================================================================== */
+
+.creative-agency-band__link {
+	margin: 0;
+	font-weight: 500;
+	line-height: 1.4;
+}
+
+.creative-agency-band a {
+	color: var(--wp--preset--color--on-primary);
+	text-decoration: none;
+	background-image: linear-gradient(currentColor, currentColor);
+	background-size: 0 2px;
+	background-position: 0 100%;
+	background-repeat: no-repeat;
+	transition: background-size 0.3s ease;
+}
+
+.creative-agency-band a:hover,
+.creative-agency-band a:focus-visible {
+	color: var(--wp--preset--color--on-primary);
+	background-size: 100% 2px;
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+.creative-agency-footer-title {
+	margin: 0 0 1.5rem;
+	font-size: var(--wp--preset--font-size--x-large);
+	font-weight: 400;
+}
+
+.is-style-creative-agency-links {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.is-style-creative-agency-links li {
+	margin: 0;
+	line-height: 2.625;
+}
+
+.is-style-creative-agency-links a {
+	text-decoration: none;
+}
+
+.creative-agency-footer a {
+	color: var(--wp--preset--color--overlay);
+	font-weight: 400;
+	transition: color 0.2s ease;
+}
+
+.creative-agency-footer a:hover,
+.creative-agency-footer a:focus-visible {
+	color: color-mix(in srgb, var(--wp--preset--color--accent) 70%, white);
+}
+
+.creative-agency-footer-address {
+	line-height: 1.75;
+}
+
+.creative-agency-footer-legal {
+	border-top: 1px solid color-mix(in srgb, var(--wp--preset--color--overlay) 20%, var(--wp--preset--color--dark));
+}
+
+.creative-agency-copyright {
+	margin: 0;
+	font-weight: 400;
+}
+
+.creative-agency-copyright a {
+	color: color-mix(in srgb, var(--wp--preset--color--accent) 70%, white);
+}
+
+@media (max-width: 781px) {
+	.creative-agency-footer-columns {
+		gap: 2rem !important;
+	}
+}
+
+/* ==========================================================================
+   Blog cards: photograph, date badge, title, excerpt and category
+   ========================================================================== */
+
+.creative-agency-post-card {
+	background-color: var(--wp--preset--color--base);
+}
+
+.creative-agency-post-media {
+	position: relative;
+}
+
+.creative-agency-post-media .wp-block-post-featured-image {
+	margin: 0;
+}
+
+.creative-agency-post-media .wp-block-post-featured-image img {
+	display: block;
+}
+
+.creative-agency-date-badge {
+	position: absolute;
+	left: 40px;
+	bottom: -20px;
+	z-index: 1;
+	padding: 13px 30px;
+	border-radius: 5px;
+	background-color: color-mix(in srgb, var(--wp--preset--color--secondary) 32%, var(--wp--preset--color--dark));
+	color: var(--wp--preset--color--overlay);
+	text-align: center;
+	line-height: 1.2;
+}
+
+.creative-agency-date-badge .wp-block-post-date {
+	margin: 0;
+	color: var(--wp--preset--color--overlay);
+}
+
+.creative-agency-date-badge__day {
+	font-size: 1.875rem;
+	font-weight: 600;
+}
+
+.creative-agency-date-badge__month {
+	font-size: var(--wp--preset--font-size--large);
+	font-weight: 300;
+}
+
+.creative-agency-post-text {
+	padding: 60px 30px 35px 35px;
+}
+
+.creative-agency-card-title {
+	margin: 0;
+	font-size: 1.5rem;
+	font-weight: 600;
+	line-height: 1.35;
+}
+
+.creative-agency-card-title a {
+	color: var(--wp--preset--color--contrast);
+}
+
+.creative-agency-card-title a:hover,
+.creative-agency-card-title a:focus-visible {
+	color: var(--wp--preset--color--primary);
+}
+
+.creative-agency-post-text .wp-block-post-excerpt__excerpt {
+	margin: 0;
+}
+
+.creative-agency-post-meta {
+	font-size: var(--wp--preset--font-size--small);
+	line-height: 1.6;
+}
+
+.creative-agency-post-meta > * {
+	display: flex;
+	align-items: center;
+	gap: 0.4em;
+	margin: 0;
+	color: var(--wp--preset--color--muted);
+}
+
+.creative-agency-post-meta a {
+	color: var(--wp--preset--color--muted);
+}
+
+.creative-agency-post-meta a:hover {
+	color: var(--wp--preset--color--primary);
+}
+
+.creative-agency-post-meta > *::before {
+	content: "";
+	flex: none;
+	width: 1em;
+	height: 1em;
+	background-color: currentColor;
+	-webkit-mask: var(--creative-agency-icon) center / contain no-repeat;
+	mask: var(--creative-agency-icon) center / contain no-repeat;
+}
+
+.creative-agency-meta-terms,
+.creative-agency-meta-date {
+	--creative-agency-icon: url("assets/icons/calendar.svg");
+}
+
+.creative-agency-meta-terms {
+	--creative-agency-icon: url("assets/icons/folder.svg");
+}
+
+.creative-agency-meta-author {
+	--creative-agency-icon: url("assets/icons/user.svg");
+}
+
+.creative-agency-journal .wp-block-post-template .creative-agency-post-card {
+	height: 100%;
+}
+
+.creative-agency-journal .creative-agency-post-text {
+	padding: 45px 25px 30px;
+}
+
+.creative-agency-journal .creative-agency-date-badge {
+	left: 25px;
+	padding: 10px 22px;
+}
+
+.creative-agency-journal .creative-agency-card-title {
+	font-size: 1.25rem;
+}
+
+@media (max-width: 767px) {
+	.creative-agency-post-text {
+		padding: 36px 20px 24px;
+	}
+
+	.creative-agency-date-badge {
+		left: 20px;
+		bottom: -12px;
+		padding: 8px 15px;
+	}
+
+	.creative-agency-date-badge__day {
+		font-size: 1.375rem;
+	}
+
+	.creative-agency-card-title {
+		font-size: 1.125rem;
+	}
+}
+
+/* Pagination: square cells in a hairline. */
+.creative-agency-pagination {
+	margin-top: var(--wp--preset--spacing--60);
+	gap: 10px;
+	font-size: var(--wp--preset--font-size--small);
+}
+
+.creative-agency-pagination .page-numbers,
+.creative-agency-pagination .wp-block-query-pagination-previous,
+.creative-agency-pagination .wp-block-query-pagination-next {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 45px;
+	height: 45px;
+	padding: 0 0.75rem;
+	box-sizing: border-box;
+	border: 1px solid color-mix(in srgb, var(--wp--preset--color--secondary) 14%, var(--wp--preset--color--base));
+	color: var(--wp--preset--color--muted);
+}
+
+.creative-agency-pagination .wp-block-query-pagination-numbers {
+	display: flex;
+	gap: 10px;
+}
+
+.creative-agency-pagination .page-numbers.current {
+	background-color: var(--wp--preset--color--surface);
+	color: var(--wp--preset--color--contrast);
+}
+
+/* ==========================================================================
+   Sidebar  (block style: core/group › Panel)
+   ========================================================================== */
+
+.is-style-creative-agency-panel {
+	background-color: var(--wp--preset--color--surface);
+}
+
+.creative-agency-widget-title {
+	margin: 0;
+	padding-bottom: 15px;
+	border-bottom: 1px solid color-mix(in srgb, var(--wp--preset--color--secondary) 14%, var(--wp--preset--color--base));
+	font-size: 1.25rem;
+	font-weight: 500;
+}
+
+.creative-agency-sidebar .wp-block-categories {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	font-size: var(--wp--preset--font-size--small);
+}
+
+.creative-agency-sidebar .wp-block-categories li {
+	padding: 12px 0;
+	border-bottom: 1px solid color-mix(in srgb, var(--wp--preset--color--secondary) 14%, var(--wp--preset--color--base));
+}
+
+.creative-agency-sidebar .wp-block-categories li:first-child {
+	padding-top: 0;
+}
+
+.creative-agency-sidebar .wp-block-categories li:last-child {
+	border-bottom: 0;
+	padding-bottom: 0;
+}
+
+.creative-agency-sidebar .wp-block-categories a {
+	color: var(--wp--preset--color--muted);
+}
+
+.creative-agency-sidebar .wp-block-categories a:hover {
+	color: var(--wp--preset--color--primary);
+}
+
+.creative-agency-recent {
+	margin: 0;
+	padding: 0;
+}
+
+.creative-agency-recent li {
+	display: flow-root;
+	margin: 0;
+}
+
+.creative-agency-recent li + li {
+	margin-top: 20px;
+}
+
+.creative-agency-recent .wp-block-latest-posts__featured-image {
+	margin: 0 20px 0 0 !important;
+}
+
+.creative-agency-recent .wp-block-latest-posts__featured-image img {
+	width: 80px;
+	height: 80px;
+	object-fit: cover;
+}
+
+.creative-agency-recent .wp-block-latest-posts__post-title {
+	display: block;
+	padding-top: 0.5rem;
+	font-size: var(--wp--preset--font-size--medium);
+	font-weight: 500;
+	line-height: 1.3;
+	color: var(--wp--preset--color--contrast);
+}
+
+.creative-agency-recent .wp-block-latest-posts__post-date {
+	margin-top: 0.3rem;
+	font-size: var(--wp--preset--font-size--small);
+	color: var(--wp--preset--color--muted);
+}
+
+.creative-agency-sidebar .wp-block-tag-cloud {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px 4px;
+	margin: 0;
+}
+
+.creative-agency-sidebar .wp-block-tag-cloud a {
+	margin: 0;
+	padding: 4px 20px;
+	border: 1px solid var(--wp--preset--color--divider);
+	border-radius: 0;
+	background-color: var(--wp--preset--color--base);
+	color: var(--wp--preset--color--muted);
+	font-size: 0.8125rem !important;
+	transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.creative-agency-sidebar .wp-block-tag-cloud a:hover,
+.creative-agency-sidebar .wp-block-tag-cloud a:focus-visible {
+	background-color: var(--wp--preset--color--primary);
+	border-color: var(--wp--preset--color--primary);
+	color: var(--wp--preset--color--on-primary);
+}
+
+/* Search with the button inside the field, as an icon. */
+.wp-block-search__button-inside .wp-block-search__inside-wrapper {
+	padding: 0;
+	border: 1px solid color-mix(in srgb, var(--wp--preset--color--secondary) 16%, var(--wp--preset--color--base));
+	border-radius: 0;
+	background-color: var(--wp--preset--color--base);
+}
+
+.wp-block-search__button-inside .wp-block-search__input {
+	border: 0;
+}
+
+.wp-block-search__button-inside .wp-block-search__button {
+	margin: 0;
+	padding: 0 1rem;
+	border: 0;
+	border-radius: 0;
+	background-color: transparent;
+	color: var(--wp--preset--color--muted);
+}
+
+.wp-block-search__button-inside .wp-block-search__button:hover {
+	color: var(--wp--preset--color--primary);
+}
+
+/* The 404's search keeps the statement's left edge: the field is capped, the
+   block itself stays as wide as the column, so nothing is left off-centre. */
+.creative-agency-search-404 .wp-block-search__inside-wrapper {
+	max-width: 520px;
+}
+
+/* ==========================================================================
+   Single post
+   ========================================================================== */
+
+.creative-agency-article > .wp-block-post-featured-image {
+	margin-bottom: 0;
+}
+
+.creative-agency-entry > * {
+	margin-block-start: 1.25rem;
+}
+
+.creative-agency-entry > :first-child {
+	margin-block-start: 0;
+}
+
+.creative-agency-entry h2,
+.creative-agency-entry h3 {
+	margin-block-start: 2.5rem;
+}
+
+.creative-agency-entry h2 {
+	font-size: 1.75rem;
+}
+
+.creative-agency-entry h3 {
+	font-size: 1.375rem;
+}
+
+/* The design's quotation: a white box with a rule on its left, inside a
+   pale frame. The frame is a spread shadow, so the quote needs no wrapper. */
+.creative-agency-entry .wp-block-quote,
+.wp-block-post-content .wp-block-quote {
+	margin: 3.5rem 30px !important;
+	padding: 25px 25px 25px 30px;
+	border: 0;
+	border-left: 2px solid var(--wp--preset--color--muted);
+	background-color: var(--wp--preset--color--base);
+	box-shadow: 0 0 0 30px color-mix(in srgb, var(--wp--preset--color--secondary) 7%, var(--wp--preset--color--base));
+	color: var(--wp--preset--color--contrast);
+	font-style: italic;
+	font-weight: 600;
+}
+
+.wp-block-quote cite {
+	display: block;
+	margin-top: 0.75rem;
+	font-size: var(--wp--preset--font-size--small);
+	font-style: normal;
+	font-weight: 400;
+	color: var(--wp--preset--color--muted);
+}
+
+.creative-agency-tags {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	padding-top: 15px;
+	border-top: 1px solid color-mix(in srgb, var(--wp--preset--color--secondary) 14%, var(--wp--preset--color--base));
+	font-size: 0.8125rem;
+}
+
+.creative-agency-tags a {
+	padding: 4px 16px;
+	border: 1px solid var(--wp--preset--color--divider);
+	color: var(--wp--preset--color--muted);
+}
+
+.creative-agency-tags .wp-block-post-terms__separator {
+	display: none;
+}
+
+.creative-agency-post-nav {
+	padding: 30px 0;
+	border-bottom: 1px solid var(--wp--preset--color--divider);
+}
+
+.creative-agency-post-nav .post-navigation-link-previous,
+.creative-agency-post-nav .post-navigation-link-next {
+	display: flex;
+	align-items: flex-start;
+	gap: 0.6rem;
+	max-width: 48%;
+	color: var(--wp--preset--color--muted);
+}
+
+.creative-agency-post-nav .post-navigation-link-next {
+	margin-left: auto;
+	text-align: right;
+}
+
+.creative-agency-post-nav .post-navigation-link-previous:empty,
+.creative-agency-post-nav .post-navigation-link-next:empty {
+	display: none;
+}
+
+.creative-agency-post-nav a {
+	color: var(--wp--preset--color--contrast);
+}
+
+.creative-agency-post-nav .post-navigation-link__label {
+	display: block;
+	font-size: var(--wp--preset--font-size--small);
+	font-weight: 400;
+	color: var(--wp--preset--color--muted);
+}
+
+.creative-agency-post-nav .post-navigation-link__title {
+	display: block;
+	font-size: 1.125rem;
+	font-weight: 500;
+	line-height: 1.4;
+}
+
+.creative-agency-post-nav a:hover .post-navigation-link__title {
+	color: var(--wp--preset--color--primary);
+}
+
+.creative-agency-author-name {
+	margin: 0;
+	font-weight: 500;
+	color: var(--wp--preset--color--contrast);
+}
+
+.creative-agency-author-box .wp-block-post-author-biography {
+	margin: 0;
+	font-size: 0.9375rem;
+}
+
+/* Comments */
+.creative-agency-comments {
+	padding-top: 45px;
+	border-top: 1px solid var(--wp--preset--color--divider);
+}
+
+.creative-agency-comments .wp-block-comments-title {
+	margin-bottom: 35px;
+	font-size: var(--wp--preset--font-size--large);
+	font-weight: 500;
+}
+
+.creative-agency-comments .wp-block-comment-template {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.creative-agency-comments .wp-block-comment-template li + li {
+	margin-top: 48px;
+}
+
+.creative-agency-comment .wp-block-avatar {
+	flex: none;
+	margin: 0;
+}
+
+.creative-agency-comment .wp-block-comment-content {
+	font-size: 0.9375rem;
+}
+
+.creative-agency-comment .wp-block-comment-content p {
+	margin: 0 0 0.5rem;
+}
+
+.creative-agency-comment-meta {
+	font-size: var(--wp--preset--font-size--small);
+}
+
+.creative-agency-comment-meta > * {
+	margin: 0;
+}
+
+.creative-agency-comment-meta .wp-block-comment-author-name {
+	font-size: var(--wp--preset--font-size--medium);
+	font-weight: 500;
+	color: var(--wp--preset--color--contrast);
+}
+
+.creative-agency-comment-meta .wp-block-comment-date,
+.creative-agency-comment-meta .wp-block-comment-date a {
+	color: var(--wp--preset--color--muted);
+}
+
+.creative-agency-comment-meta .wp-block-comment-reply-link {
+	margin-left: auto;
+	text-transform: uppercase;
+	font-size: 0.8125rem;
+}
+
+.creative-agency-comments .wp-block-post-comments-form {
+	margin-top: 50px;
+	padding-top: 45px;
+	border-top: 1px solid var(--wp--preset--color--divider);
+}
+
+.creative-agency-comments .comment-reply-title {
+	font-size: var(--wp--preset--font-size--large);
+	font-weight: 500;
+}
+
+/* ==========================================================================
+   Contact
+   ========================================================================== */
+
+/* An <iframe> is inline, and a constrained layout centres with auto margins,
+   which do nothing for an inline box: the map would take the width cap and sit
+   flush left. As a block it centres. */
+.creative-agency-map {
+	display: block;
+}
+
+.creative-agency-contact-title {
+	margin: 0;
+	font-size: 1.6875rem;
+	font-weight: 600;
+}
+
+/* A line of contact detail: icon, then two lines of text beside it. */
+.creative-agency-detail {
+	position: relative;
+	margin-inline: 0;
+	margin-bottom: 0;
+	padding-left: 3rem;
+	font-size: var(--wp--preset--font-size--medium);
+	line-height: 1.6;
+}
+
+.creative-agency-detail strong {
+	font-weight: 500;
+	color: var(--wp--preset--color--contrast);
+}
+
+.creative-agency-detail::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 0.1em;
+	width: 27px;
+	height: 27px;
+	background-color: var(--wp--preset--color--muted);
+	-webkit-mask: var(--creative-agency-icon) center / contain no-repeat;
+	mask: var(--creative-agency-icon) center / contain no-repeat;
+}
+
+/* ==========================================================================
+   A project page
+   ========================================================================== */
+
+.creative-agency-project > .wp-block-image {
+	margin: 0;
+}
+
+.creative-agency-project > .wp-block-image img {
+	display: block;
+	width: 100%;
+}
+
+.creative-agency-project-meta p {
+	margin: 0;
+	font-weight: 400;
+}
+
+.creative-agency-meta-label {
+	font-weight: 600 !important;
+}
+
+.creative-agency-project-meta .wp-block-column > p + p {
+	margin-top: 0.4rem;
+}
+
+.creative-agency-project-meta > .wp-block-column:last-child {
+	align-self: center;
+}
+
+/* Share buttons: the design's 50px brand-coloured discs. */
+.creative-agency-share.wp-block-social-links {
+	gap: 10px;
+}
+
+.creative-agency-share .wp-social-link {
+	width: 50px;
+	height: 50px;
+	margin: 0 !important;
+}
+
+.creative-agency-share .wp-social-link a {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+	padding: 0 !important;
+}
+
+.creative-agency-share .wp-social-link svg {
+	width: 18px;
+	height: 18px;
+}
+
+.creative-agency-project > .wp-block-separator {
+	margin-inline: 0;
+	margin-bottom: 0;
+	border-color: var(--wp--preset--color--divider);
+}
+
+/* The design leaves 35px between the facts and the rule, 60px after it. */
+.creative-agency-project > .creative-agency-project-meta + .wp-block-separator {
+	margin-block-start: 2.2rem !important;
+}
+
+.creative-agency-project-title {
+	margin: 0 0 1.875rem;
+	font-size: 2.25rem;
+	font-weight: 500;
+}
+
+.creative-agency-project-details .wp-block-column > p {
+	margin: 0 0 1.25rem;
+}
+
+/* Yellow dots (block style: core/list › Yellow dots). */
+.is-style-creative-agency-dots {
+	margin: 1.875rem 0 0;
+	padding: 0;
+	list-style: none;
+	color: var(--wp--preset--color--contrast);
+	font-weight: 400;
+}
+
+.is-style-creative-agency-dots li {
+	position: relative;
+	padding-left: 30px;
+	line-height: 1.5;
+}
+
+.is-style-creative-agency-dots li + li {
+	margin-top: 1rem;
+}
+
+.is-style-creative-agency-dots li::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 0.45em;
+	width: 12px;
+	height: 12px;
+	border-radius: 50%;
+	background-color: var(--wp--preset--color--highlight);
+}
+
+.creative-agency-project-nav {
+	margin-top: var(--wp--preset--spacing--90) !important;
+}
+
+.creative-agency-project-nav__label {
+	display: flex;
+	align-items: center;
+	gap: 0.4em;
+	margin: 0;
+	color: var(--wp--preset--color--muted);
+}
+
+.creative-agency-project-nav__label--right {
+	justify-content: flex-end;
+}
+
+.creative-agency-project-nav__label::before,
+.creative-agency-project-nav__label--right::after {
+	content: "";
+	width: 1em;
+	height: 1em;
+	background-color: currentColor;
+	-webkit-mask: url("assets/icons/arrow-left.svg") center / contain no-repeat;
+	mask: url("assets/icons/arrow-left.svg") center / contain no-repeat;
+}
+
+.creative-agency-project-nav__label--right::before {
+	display: none;
+}
+
+.creative-agency-project-nav__label--right::after {
+	-webkit-mask-image: url("assets/icons/arrow-right.svg");
+	mask-image: url("assets/icons/arrow-right.svg");
+}
+
+.creative-agency-project-nav__title {
+	margin: 0.25rem 0 0;
+	font-size: var(--wp--preset--font-size--heading);
+	font-weight: 600;
+}
+
+.creative-agency-project-nav__title a {
+	color: var(--wp--preset--color--contrast);
+}
+
+.creative-agency-project-nav__title a:hover {
+	color: var(--wp--preset--color--primary);
+}
+
+@media (max-width: 781px) {
+	.creative-agency-project-meta > .wp-block-column:last-child .wp-block-social-links {
+		justify-content: flex-start !important;
+	}
+
+	.creative-agency-project-details .wp-block-buttons {
+		justify-content: flex-start !important;
+	}
+}
+
+/* ==========================================================================
+   Icons
+
+   Tabler Icons, drawn as masks: the SVG supplies the shape and the element's
+   own text colour fills it, so an icon takes whatever palette is active and
+   turns over in dark mode. The class sits on the block itself, so the icon
+   shows in the editor too, and changing it is an edit to Advanced →
+   Additional CSS class(es).
+   ========================================================================== */
+
+.creative-agency-icon--user-search { --creative-agency-icon: url("assets/icons/user-search.svg"); }
+.creative-agency-icon--palette { --creative-agency-icon: url("assets/icons/palette.svg"); }
+.creative-agency-icon--code { --creative-agency-icon: url("assets/icons/code.svg"); }
+.creative-agency-icon--vector-bezier { --creative-agency-icon: url("assets/icons/vector-bezier.svg"); }
+.creative-agency-icon--package { --creative-agency-icon: url("assets/icons/package.svg"); }
+.creative-agency-icon--components { --creative-agency-icon: url("assets/icons/components.svg"); }
+.creative-agency-icon--map-pin { --creative-agency-icon: url("assets/icons/map-pin.svg"); }
+.creative-agency-icon--device-mobile { --creative-agency-icon: url("assets/icons/device-mobile.svg"); }
+.creative-agency-icon--mail { --creative-agency-icon: url("assets/icons/mail.svg"); }
+
+/* ==========================================================================
+   Video popup (assets/js/interactions.js)
+   ========================================================================== */
+
+.creative-agency-video-dialog {
+	width: min(960px, 92vw);
+	padding: 0;
+	border: 0;
+	border-radius: 6px;
+	overflow: visible;
+	background: #000;
+}
+
+.creative-agency-video-dialog::backdrop {
+	background: rgb(0 0 0 / 0.82);
+}
+
+.creative-agency-video-dialog iframe {
+	display: block;
+	width: 100%;
+	aspect-ratio: 16 / 9;
+	border: 0;
+	border-radius: 6px;
+}
+
+.creative-agency-video-dialog__close {
+	position: absolute;
+	top: -3rem;
+	right: 0;
+	width: 2.5rem;
+	height: 2.5rem;
+	border: 0;
+	border-radius: 50%;
+	background: rgb(255 255 255 / 0.14);
+	color: #fff;
+	font-size: 1.5rem;
+	line-height: 1;
+	cursor: pointer;
+}
+
+.creative-agency-video-dialog__close:hover,
+.creative-agency-video-dialog__close:focus-visible {
+	background: rgb(255 255 255 / 0.28);
+}
+
+/* ==========================================================================
+   Links on the dark ground
+
+   The palette's `primary` is chosen to be readable on the page, not on
+   black, so anything dark states its own link colour.
+   ========================================================================== */
+
+.wp-block-group.has-dark-background-color a:where(:not(.wp-element-button)) {
+	color: var(--wp--preset--color--overlay);
+}
+
+/* ==========================================================================
+   Focus
+   ========================================================================== */
+
+:where(a, button, input, textarea, select, summary):focus-visible {
+	outline: 2px solid var(--wp--preset--color--accent);
+	outline-offset: 3px;
+}
+
+/* ==========================================================================
+   Reduced motion: no movement anywhere.
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+	.creative-agency-header.is-stuck {
+		animation: none;
+	}
+
+	.creative-agency-work__media::after,
+	.creative-agency-work__media > .wp-block-buttons,
+	.creative-agency-strip .wp-block-image img,
+	.creative-agency-strip .wp-block-image::after,
+	.creative-agency-play > .wp-block-button__link {
+		transition: none;
+		transform: none;
+	}
+
+	.creative-agency-strip .wp-block-image:hover img,
+	.creative-agency-play > .wp-block-button__link:hover {
+		transform: none;
+	}
+}

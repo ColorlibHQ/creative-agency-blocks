@@ -1,0 +1,996 @@
+# Copyright (C) 2026 Colorlib
+# This file is distributed under the GNU General Public License v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Creative Agency 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/creative-agency-blocks\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-09-24T19:29:43+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: creative-agency\n"
+
+#. Theme Name of the theme
+#: style.css
+msgid "Creative Agency"
+msgstr ""
+
+#. Theme URI of the theme
+#: style.css
+msgid "https://colorlib.com/wp/themes/creative-agency/"
+msgstr ""
+
+#. Description of the theme
+#: style.css
+msgid "A block theme for design studios, creative agencies and freelancers. A large opening statement, a staggered project grid with a page for every project, a black services band, client logos, counting figures, a studio photo strip and a contact form that needs no plugin — six colour palettes, five type pairings, visitor dark mode and WooCommerce support. Full site editing throughout."
+msgstr ""
+
+#. Author of the theme
+#: style.css
+msgid "Colorlib"
+msgstr ""
+
+#. Author URI of the theme
+#: style.css
+msgid "https://colorlib.com/"
+msgstr ""
+
+#: functions.php:70
+msgid "Underlined link"
+msgstr ""
+
+#: functions.php:73
+msgid "Outlined card"
+msgstr ""
+
+#: functions.php:74
+msgid "Panel"
+msgstr ""
+
+#: functions.php:77
+msgid "Watermark"
+msgstr ""
+
+#: functions.php:80
+msgid "Marked"
+msgstr ""
+
+#: functions.php:83
+msgid "Yellow dots"
+msgstr ""
+
+#: functions.php:84
+msgid "Plain links"
+msgstr ""
+
+#: functions.php:168
+msgid "Video"
+msgstr ""
+
+#: functions.php:169
+msgid "Close video"
+msgstr ""
+
+#: functions.php:186
+msgid "Creative Agency: sections"
+msgstr ""
+
+#: functions.php:187
+msgid "Full-width sections for building pages."
+msgstr ""
+
+#: functions.php:190
+msgid "Creative Agency: pages"
+msgstr ""
+
+#: functions.php:191
+msgid "Complete page layouts."
+msgstr ""
+
+#: inc/contact-form.php:45
+msgid "Tell us about the project"
+msgstr ""
+
+#: inc/contact-form.php:50
+msgid "Your name"
+msgstr ""
+
+#: inc/contact-form.php:56
+msgid "Email address"
+msgstr ""
+
+#: inc/contact-form.php:62
+msgid "Subject"
+msgstr ""
+
+#: inc/contact-form.php:148
+msgid "Send message"
+msgstr ""
+
+#: inc/contact-form.php:172
+msgid "Leave this field empty"
+msgstr ""
+
+#: inc/contact-form.php:215
+msgid "Thank you — your message is with us. We reply to every project brief within two working days."
+msgstr ""
+
+#: inc/contact-form.php:216
+msgid "Please check the form: every field marked * needs an answer."
+msgstr ""
+
+#: inc/contact-form.php:217
+msgid "That email address does not look right."
+msgstr ""
+
+#: inc/contact-form.php:218
+msgid "Sorry, the message could not be sent. Please email or call us instead."
+msgstr ""
+
+#: inc/contact-form.php:219
+msgid "That form had been open a while and expired. Please send it again."
+msgstr ""
+
+#. translators: %s: site name.
+#: inc/contact-form.php:335
+#, php-format
+msgid "[%s] New project message"
+msgstr ""
+
+#: inc/front-page-setup.php:36
+msgid "Home"
+msgstr ""
+
+#: inc/front-page-setup.php:41
+msgid "About"
+msgstr ""
+
+#: inc/front-page-setup.php:46
+msgid "Work"
+msgstr ""
+
+#: inc/front-page-setup.php:51
+msgid "Nookdesk booking app"
+msgstr ""
+
+#: inc/front-page-setup.php:56
+msgid "Whisk design system"
+msgstr ""
+
+#: inc/front-page-setup.php:61
+msgid "Harrow & Pine packaging"
+msgstr ""
+
+#: inc/front-page-setup.php:66
+msgid "Arcade Club app"
+msgstr ""
+
+#: inc/front-page-setup.php:71
+msgid "Services"
+msgstr ""
+
+#: inc/front-page-setup.php:76
+msgid "Blog"
+msgstr ""
+
+#: inc/front-page-setup.php:81
+msgid "Contact"
+msgstr ""
+
+#: inc/front-page-setup.php:406
+msgid "Primary"
+msgstr ""
+
+#: inc/scheme.php:96
+#: inc/scheme.php:127
+msgid "Switch to dark mode"
+msgstr ""
+
+#: inc/scheme.php:97
+msgid "Switch to light mode"
+msgstr ""
+
+#. translators: 1: the update host, 2: the list of values sent, 3: filter name.
+#: inc/updates.php:193
+#, php-format
+msgid "Creative Agency checks %1$s for updates twice a day and sends %2$s. No personal data and no site name is sent, and the identifier is a one-way hash. Add the %3$s filter to switch it off."
+msgstr ""
+
+#: patterns/blog-latest.php
+msgctxt "Pattern title"
+msgid "Latest posts"
+msgstr ""
+
+#: patterns/blog-latest.php
+msgctxt "Pattern description"
+msgid "The three most recent posts as cards with a date badge."
+msgstr ""
+
+#: patterns/clients.php
+msgctxt "Pattern title"
+msgid "Client logos"
+msgstr ""
+
+#: patterns/clients.php
+msgctxt "Pattern description"
+msgid "A row of six client logos in grey."
+msgstr ""
+
+#: patterns/contact.php
+msgctxt "Pattern title"
+msgid "Contact: map, form and details"
+msgstr ""
+
+#: patterns/contact.php
+msgctxt "Pattern description"
+msgid "A map, then the contact form beside the studio's address, phone and email."
+msgstr ""
+
+#: patterns/cta-band.php
+msgctxt "Pattern title"
+msgid "Call to action band"
+msgstr ""
+
+#: patterns/cta-band.php
+msgctxt "Pattern description"
+msgid "A full-width band with one large link."
+msgstr ""
+
+#: patterns/facts.php
+msgctxt "Pattern title"
+msgid "Quick facts"
+msgstr ""
+
+#: patterns/facts.php
+msgctxt "Pattern description"
+msgid "Three figures that count up as they come into view, over a giant pale title."
+msgstr ""
+
+#: patterns/footer.php
+msgctxt "Pattern title"
+msgid "Footer"
+msgstr ""
+
+#: patterns/footer.php
+msgctxt "Pattern description"
+msgid "Three columns on black — social links, pages and the studio's address — with a copyright line beneath."
+msgstr ""
+
+#: patterns/header.php
+msgctxt "Pattern title"
+msgid "Header"
+msgstr ""
+
+#: patterns/header.php
+msgctxt "Pattern description"
+msgid "The site's initial in a blue tile, the navigation centred, and a Say hi link. It turns black and follows the page once you scroll."
+msgstr ""
+
+#: patterns/heading-about.php
+msgctxt "Pattern title"
+msgid "About: opening statement"
+msgstr ""
+
+#: patterns/heading-about.php
+#: patterns/heading-contact.php
+#: patterns/heading-services.php
+#: patterns/heading-work.php
+msgctxt "Pattern description"
+msgid "An opening statement for an inner page, with the two floating shapes."
+msgstr ""
+
+#: patterns/heading-contact.php
+msgctxt "Pattern title"
+msgid "Contact: opening statement"
+msgstr ""
+
+#: patterns/heading-project-arcade-club.php
+msgctxt "Pattern title"
+msgid "Project heading: Arcade Club"
+msgstr ""
+
+#: patterns/heading-project-arcade-club.php
+#: patterns/heading-project-harrow-and-pine.php
+#: patterns/heading-project-nookdesk.php
+#: patterns/heading-project-whisk.php
+msgctxt "Pattern description"
+msgid "The opening statement of a project page."
+msgstr ""
+
+#: patterns/heading-project-harrow-and-pine.php
+msgctxt "Pattern title"
+msgid "Project heading: Harrow &amp; Pine"
+msgstr ""
+
+#: patterns/heading-project-nookdesk.php
+msgctxt "Pattern title"
+msgid "Project heading: Nookdesk"
+msgstr ""
+
+#: patterns/heading-project-whisk.php
+msgctxt "Pattern title"
+msgid "Project heading: Whisk"
+msgstr ""
+
+#: patterns/heading-services.php
+msgctxt "Pattern title"
+msgid "Services: opening statement"
+msgstr ""
+
+#: patterns/heading-work.php
+msgctxt "Pattern title"
+msgid "Work: opening statement"
+msgstr ""
+
+#: patterns/hero.php
+msgctxt "Pattern title"
+msgid "Opening statement"
+msgstr ""
+
+#: patterns/hero.php
+msgctxt "Pattern description"
+msgid "The page's opening line in large type, with a link beneath it and two floating shapes."
+msgstr ""
+
+#: patterns/hidden-404.php
+msgctxt "Pattern title"
+msgid "404 content"
+msgstr ""
+
+#: patterns/hidden-404.php
+msgctxt "Pattern description"
+msgid "What a visitor sees when nothing is there."
+msgstr ""
+
+#: patterns/hidden-archive-banner.php
+msgctxt "Pattern title"
+msgid "Archive banner"
+msgstr ""
+
+#: patterns/hidden-archive-banner.php
+msgctxt "Pattern description"
+msgid "The opening band an archive title sits in."
+msgstr ""
+
+#: patterns/hidden-author-box.php
+msgctxt "Pattern title"
+msgid "Author box"
+msgstr ""
+
+#: patterns/hidden-author-box.php
+msgctxt "Pattern description"
+msgid "The author's photograph, name and biography under a post."
+msgstr ""
+
+#: patterns/hidden-blog-heading.php
+msgctxt "Pattern title"
+msgid "Blog heading"
+msgstr ""
+
+#: patterns/hidden-blog-heading.php
+msgctxt "Pattern description"
+msgid "The opening band of the posts page."
+msgstr ""
+
+#: patterns/hidden-comments.php
+msgctxt "Pattern title"
+msgid "Comments"
+msgstr ""
+
+#: patterns/hidden-comments.php
+msgctxt "Pattern description"
+msgid "The comments area for a single post."
+msgstr ""
+
+#: patterns/hidden-page-banner.php
+msgctxt "Pattern title"
+msgid "Page banner"
+msgstr ""
+
+#: patterns/hidden-page-banner.php
+msgctxt "Pattern description"
+msgid "The opening band a page title sits in."
+msgstr ""
+
+#: patterns/hidden-post-meta.php
+msgctxt "Pattern title"
+msgid "Post meta"
+msgstr ""
+
+#: patterns/hidden-post-meta.php
+msgctxt "Pattern description"
+msgid "Date and author for a single post."
+msgstr ""
+
+#: patterns/hidden-posts-list.php
+msgctxt "Pattern title"
+msgid "Posts with sidebar"
+msgstr ""
+
+#: patterns/hidden-posts-list.php
+msgctxt "Pattern description"
+msgid "The post list used by the blog and every archive, beside the sidebar."
+msgstr ""
+
+#: patterns/hidden-search-banner.php
+msgctxt "Pattern title"
+msgid "Search banner"
+msgstr ""
+
+#: patterns/hidden-search-banner.php
+msgctxt "Pattern description"
+msgid "The opening band search results sit under."
+msgstr ""
+
+#: patterns/hidden-single-banner.php
+msgctxt "Pattern title"
+msgid "Post banner"
+msgstr ""
+
+#: patterns/hidden-single-banner.php
+msgctxt "Pattern description"
+msgid "The opening band a post title sits in."
+msgstr ""
+
+#: patterns/page-about.php
+msgctxt "Pattern title"
+msgid "Page: about"
+msgstr ""
+
+#: patterns/page-about.php
+msgctxt "Pattern description"
+msgid "A complete about page, built from the theme's sections."
+msgstr ""
+
+#: patterns/page-contact.php
+msgctxt "Pattern title"
+msgid "Page: contact"
+msgstr ""
+
+#: patterns/page-contact.php
+msgctxt "Pattern description"
+msgid "A complete contact page, built from the theme's sections."
+msgstr ""
+
+#: patterns/page-home.php
+msgctxt "Pattern title"
+msgid "Page: home"
+msgstr ""
+
+#: patterns/page-home.php
+msgctxt "Pattern description"
+msgid "A complete home page, built from the theme's sections."
+msgstr ""
+
+#: patterns/page-project-arcade-club.php
+msgctxt "Pattern title"
+msgid "Page: Arcade Club"
+msgstr ""
+
+#: patterns/page-project-arcade-club.php
+msgctxt "Pattern description"
+msgid "A complete Arcade Club page, built from the theme's sections."
+msgstr ""
+
+#: patterns/page-project-harrow-and-pine.php
+msgctxt "Pattern title"
+msgid "Page: Harrow &amp; Pine"
+msgstr ""
+
+#: patterns/page-project-harrow-and-pine.php
+msgctxt "Pattern description"
+msgid "A complete Harrow &amp; Pine page, built from the theme's sections."
+msgstr ""
+
+#: patterns/page-project-nookdesk.php
+msgctxt "Pattern title"
+msgid "Page: Nookdesk"
+msgstr ""
+
+#: patterns/page-project-nookdesk.php
+msgctxt "Pattern description"
+msgid "A complete Nookdesk page, built from the theme's sections."
+msgstr ""
+
+#: patterns/page-project-whisk.php
+msgctxt "Pattern title"
+msgid "Page: Whisk"
+msgstr ""
+
+#: patterns/page-project-whisk.php
+msgctxt "Pattern description"
+msgid "A complete Whisk page, built from the theme's sections."
+msgstr ""
+
+#: patterns/page-services.php
+msgctxt "Pattern title"
+msgid "Page: services"
+msgstr ""
+
+#: patterns/page-services.php
+msgctxt "Pattern description"
+msgid "A complete services page, built from the theme's sections."
+msgstr ""
+
+#: patterns/page-work.php
+msgctxt "Pattern title"
+msgid "Page: work"
+msgstr ""
+
+#: patterns/page-work.php
+msgctxt "Pattern description"
+msgid "A complete work page, built from the theme's sections."
+msgstr ""
+
+#: patterns/project-arcade-club.php
+msgctxt "Pattern title"
+msgid "Project: Arcade Club"
+msgstr ""
+
+#: patterns/project-arcade-club.php
+#: patterns/project-harrow-and-pine.php
+#: patterns/project-nookdesk.php
+#: patterns/project-whisk.php
+msgctxt "Pattern description"
+msgid "A project page: large photograph, client, service and year, the story, and links to the previous and next projects."
+msgstr ""
+
+#: patterns/project-harrow-and-pine.php
+msgctxt "Pattern title"
+msgid "Project: Harrow &amp; Pine"
+msgstr ""
+
+#: patterns/project-nookdesk.php
+msgctxt "Pattern title"
+msgid "Project: Nookdesk"
+msgstr ""
+
+#: patterns/project-whisk.php
+msgctxt "Pattern title"
+msgid "Project: Whisk"
+msgstr ""
+
+#: patterns/services-dark.php
+msgctxt "Pattern title"
+msgid "Services: black band with client logos"
+msgstr ""
+
+#: patterns/services-dark.php
+msgctxt "Pattern description"
+msgid "Three services on the black band, with a row of client logos beneath."
+msgstr ""
+
+#: patterns/services-grid.php
+msgctxt "Pattern title"
+msgid "Services: six cards"
+msgstr ""
+
+#: patterns/services-grid.php
+msgctxt "Pattern description"
+msgid "Six services in two rows of outlined cards, each with a coloured icon."
+msgstr ""
+
+#: patterns/sidebar.php
+msgctxt "Pattern title"
+msgid "Sidebar"
+msgstr ""
+
+#: patterns/sidebar.php
+msgctxt "Pattern description"
+msgid "Search, categories, recent posts, tags and a call to start a project."
+msgstr ""
+
+#: patterns/story.php
+msgctxt "Pattern title"
+msgid "Story: photograph and text"
+msgstr ""
+
+#: patterns/story.php
+msgctxt "Pattern description"
+msgid "A photograph beside a heading, a paragraph and a link."
+msgstr ""
+
+#: patterns/studio-strip.php
+msgctxt "Pattern title"
+msgid "Studio photographs"
+msgstr ""
+
+#: patterns/studio-strip.php
+msgctxt "Pattern description"
+msgid "Five photographs edge to edge; each enlarges on click."
+msgstr ""
+
+#: patterns/video.php
+msgctxt "Pattern title"
+msgid "Studio film"
+msgstr ""
+
+#: patterns/video.php
+msgctxt "Pattern description"
+msgid "A full-width photograph of the studio with a play button that opens a video."
+msgstr ""
+
+#: patterns/works-page.php
+msgctxt "Pattern title"
+msgid "Works: project grid"
+msgstr ""
+
+#: patterns/works-page.php
+msgctxt "Pattern description"
+msgid "The project grid without its title, for the Work page."
+msgstr ""
+
+#: patterns/works.php
+msgctxt "Pattern title"
+msgid "Works: four projects"
+msgstr ""
+
+#: patterns/works.php
+msgctxt "Pattern description"
+msgid "Four projects in a staggered two-column grid, each linking to its own page."
+msgstr ""
+
+#: theme.json
+#: styles/colors/colors-1-azure.json
+#: styles/colors/colors-2-violet.json
+#: styles/colors/colors-3-coral.json
+#: styles/colors/colors-4-emerald.json
+#: styles/colors/colors-5-ink.json
+#: styles/colors/colors-6-midnight.json
+msgctxt "Color name"
+msgid "Base"
+msgstr ""
+
+#: theme.json
+#: styles/colors/colors-1-azure.json
+#: styles/colors/colors-2-violet.json
+#: styles/colors/colors-3-coral.json
+#: styles/colors/colors-4-emerald.json
+#: styles/colors/colors-5-ink.json
+#: styles/colors/colors-6-midnight.json
+msgctxt "Color name"
+msgid "Surface"
+msgstr ""
+
+#: theme.json
+#: styles/colors/colors-1-azure.json
+#: styles/colors/colors-2-violet.json
+#: styles/colors/colors-3-coral.json
+#: styles/colors/colors-4-emerald.json
+#: styles/colors/colors-5-ink.json
+#: styles/colors/colors-6-midnight.json
+msgctxt "Color name"
+msgid "Contrast"
+msgstr ""
+
+#: theme.json
+#: styles/colors/colors-1-azure.json
+#: styles/colors/colors-2-violet.json
+#: styles/colors/colors-3-coral.json
+#: styles/colors/colors-4-emerald.json
+#: styles/colors/colors-5-ink.json
+#: styles/colors/colors-6-midnight.json
+msgctxt "Color name"
+msgid "Muted"
+msgstr ""
+
+#: theme.json
+#: styles/colors/colors-1-azure.json
+#: styles/colors/colors-2-violet.json
+#: styles/colors/colors-3-coral.json
+#: styles/colors/colors-4-emerald.json
+#: styles/colors/colors-5-ink.json
+#: styles/colors/colors-6-midnight.json
+msgctxt "Color name"
+msgid "Primary"
+msgstr ""
+
+#: theme.json
+#: styles/colors/colors-1-azure.json
+#: styles/colors/colors-2-violet.json
+#: styles/colors/colors-3-coral.json
+#: styles/colors/colors-4-emerald.json
+#: styles/colors/colors-5-ink.json
+#: styles/colors/colors-6-midnight.json
+msgctxt "Color name"
+msgid "Primary deep"
+msgstr ""
+
+#: theme.json
+#: styles/colors/colors-1-azure.json
+#: styles/colors/colors-2-violet.json
+#: styles/colors/colors-3-coral.json
+#: styles/colors/colors-4-emerald.json
+#: styles/colors/colors-5-ink.json
+#: styles/colors/colors-6-midnight.json
+msgctxt "Color name"
+msgid "Accent"
+msgstr ""
+
+#: theme.json
+#: styles/colors/colors-1-azure.json
+#: styles/colors/colors-2-violet.json
+#: styles/colors/colors-3-coral.json
+#: styles/colors/colors-4-emerald.json
+#: styles/colors/colors-5-ink.json
+#: styles/colors/colors-6-midnight.json
+msgctxt "Color name"
+msgid "Highlight"
+msgstr ""
+
+#: theme.json
+#: styles/colors/colors-1-azure.json
+#: styles/colors/colors-2-violet.json
+#: styles/colors/colors-3-coral.json
+#: styles/colors/colors-4-emerald.json
+#: styles/colors/colors-5-ink.json
+#: styles/colors/colors-6-midnight.json
+msgctxt "Color name"
+msgid "Secondary"
+msgstr ""
+
+#: theme.json
+#: styles/colors/colors-1-azure.json
+#: styles/colors/colors-2-violet.json
+#: styles/colors/colors-3-coral.json
+#: styles/colors/colors-4-emerald.json
+#: styles/colors/colors-5-ink.json
+#: styles/colors/colors-6-midnight.json
+msgctxt "Color name"
+msgid "Tertiary"
+msgstr ""
+
+#: theme.json
+#: styles/colors/colors-1-azure.json
+#: styles/colors/colors-2-violet.json
+#: styles/colors/colors-3-coral.json
+#: styles/colors/colors-4-emerald.json
+#: styles/colors/colors-5-ink.json
+#: styles/colors/colors-6-midnight.json
+msgctxt "Color name"
+msgid "Decor"
+msgstr ""
+
+#: theme.json
+#: styles/colors/colors-1-azure.json
+#: styles/colors/colors-2-violet.json
+#: styles/colors/colors-3-coral.json
+#: styles/colors/colors-4-emerald.json
+#: styles/colors/colors-5-ink.json
+#: styles/colors/colors-6-midnight.json
+msgctxt "Color name"
+msgid "Dark"
+msgstr ""
+
+#: theme.json
+#: styles/colors/colors-1-azure.json
+#: styles/colors/colors-2-violet.json
+#: styles/colors/colors-3-coral.json
+#: styles/colors/colors-4-emerald.json
+#: styles/colors/colors-5-ink.json
+#: styles/colors/colors-6-midnight.json
+msgctxt "Color name"
+msgid "Divider"
+msgstr ""
+
+#: theme.json
+#: styles/colors/colors-1-azure.json
+#: styles/colors/colors-2-violet.json
+#: styles/colors/colors-3-coral.json
+#: styles/colors/colors-4-emerald.json
+#: styles/colors/colors-5-ink.json
+#: styles/colors/colors-6-midnight.json
+msgctxt "Color name"
+msgid "Overlay"
+msgstr ""
+
+#: theme.json
+#: styles/colors/colors-1-azure.json
+#: styles/colors/colors-2-violet.json
+#: styles/colors/colors-3-coral.json
+#: styles/colors/colors-4-emerald.json
+#: styles/colors/colors-5-ink.json
+#: styles/colors/colors-6-midnight.json
+msgctxt "Color name"
+msgid "On dark"
+msgstr ""
+
+#: theme.json
+#: styles/colors/colors-1-azure.json
+#: styles/colors/colors-2-violet.json
+#: styles/colors/colors-3-coral.json
+#: styles/colors/colors-4-emerald.json
+#: styles/colors/colors-5-ink.json
+#: styles/colors/colors-6-midnight.json
+msgctxt "Color name"
+msgid "On primary"
+msgstr ""
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Poppins"
+msgstr ""
+
+#: theme.json
+msgctxt "Font family name"
+msgid "DM Sans"
+msgstr ""
+
+#: theme.json
+msgctxt "Font family name"
+msgid "System"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Small"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Medium"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Large"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "X Large"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Heading"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Display"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Colossal"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "20"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "30"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "40"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "50"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "60"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "70"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "80"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "90"
+msgstr ""
+
+#: theme.json
+msgctxt "Shadow name"
+msgid "Soft"
+msgstr ""
+
+#: theme.json
+msgctxt "Shadow name"
+msgid "Lifted"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Page without title"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Page with sidebar"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Post without sidebar"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Header"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Footer"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Sidebar"
+msgstr ""
+
+#: styles/colors/colors-1-azure.json
+msgctxt "Style variation name"
+msgid "Azure"
+msgstr ""
+
+#: styles/colors/colors-2-violet.json
+msgctxt "Style variation name"
+msgid "Violet"
+msgstr ""
+
+#: styles/colors/colors-3-coral.json
+msgctxt "Style variation name"
+msgid "Coral"
+msgstr ""
+
+#: styles/colors/colors-4-emerald.json
+msgctxt "Style variation name"
+msgid "Emerald"
+msgstr ""
+
+#: styles/colors/colors-5-ink.json
+msgctxt "Style variation name"
+msgid "Ink"
+msgstr ""
+
+#: styles/colors/colors-6-midnight.json
+msgctxt "Style variation name"
+msgid "Midnight"
+msgstr ""
+
+#: styles/typography/type-1-poppins.json
+msgctxt "Style variation name"
+msgid "Poppins throughout"
+msgstr ""
+
+#: styles/typography/type-2-poppins-dm-sans.json
+msgctxt "Style variation name"
+msgid "Poppins headings, DM Sans text"
+msgstr ""
+
+#: styles/typography/type-3-dm-sans.json
+msgctxt "Style variation name"
+msgid "DM Sans throughout"
+msgstr ""
+
+#: styles/typography/type-4-dm-sans-poppins.json
+msgctxt "Style variation name"
+msgid "DM Sans headings, Poppins text"
+msgstr ""
+
+#: styles/typography/type-5-system.json
+msgctxt "Style variation name"
+msgid "System fonts"
+msgstr ""
