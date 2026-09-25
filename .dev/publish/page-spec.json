@@ -1,0 +1,171 @@
+{
+ "slug": "creative-agency",
+ "name": "Creative Agency",
+ "tint": "#f7f9fc",
+ "accent": "#0070d8",
+ "download": "https://updates.colorlib.com/download/theme/creative-agency.zip",
+ "demo": "https://colorlibhub.com/creative-agency-blocks/",
+ "elementor_demo": "https://colorlibhub.com/creative-agency/",
+ "elementor_repo": "https://github.com/ColorlibHQ/creative-agency",
+ "hero": {
+  "heading": "A design studio theme with a page for every project",
+  "text": "Creative Agency is a free block theme for design studios, creative agencies and freelancers. One large statement per screen, a staggered grid of projects that each get their own page, a black services band with client logos, counting figures, a strip of studio photographs and a contact form that needs no plugin. Six colour palettes, a visitor dark mode and full site editing throughout.",
+  "image": "creative-agency-block-theme-home.jpg"
+ },
+ "versions": {
+  "heading": "Two versions of Creative Agency",
+  "lede": "The same design, built two ways. Both are free.",
+  "block": {
+   "kicker": "Recommended for new sites",
+   "title": "Block theme",
+   "text": "This download. Everything is edited in WordPress’s own Site Editor, with no plugins: the header, the footer, every template and every section. Patterns for each section, six colour palettes, five type pairings and a dark mode for visitors."
+  },
+  "elementor": {
+   "kicker": "For sites built with Elementor",
+   "title": "Elementor edition",
+   "text": "The same design built for Elementor. It needs the free Elementor plugin and the <a href=\"https://github.com/ColorlibHQ/creative-agency-companion\" target=\"_blank\" rel=\"noopener\">Creative Agency Companion</a> plugin, which adds its widgets. The source is free on GitHub."
+  }
+ },
+ "blocks": [
+  {
+   "type": "section",
+   "heading": "Your work, one project at a time",
+   "text": "Four projects in the design’s staggered grid, each with a photograph, a title on a yellow rule and a link to its own page. Add a fifth by duplicating one: it is ordinary blocks.",
+   "image": "creative-agency-block-theme-projects.jpg"
+  },
+  {
+   "type": "section",
+   "heading": "A page for every project",
+   "text": "Each case study opens with the photograph, then the client, the service and the year, the story of the project and what it achieved, and a link to the previous and next project. All four are built for you on activation.",
+   "image": "creative-agency-block-theme-project-page.jpg"
+  },
+  {
+   "type": "section",
+   "heading": "Services, figures and client logos",
+   "text": "A black band of services with icons that take the palette’s colours, a row of client logos, and figures that count up as they scroll into view. Each is a pattern: insert it, change the words, and it stays as editable as a paragraph.",
+   "image": "creative-agency-block-theme-services.jpg"
+  },
+  {
+   "type": "section",
+   "heading": "A contact form without a plugin",
+   "text": "The contact form is part of the theme. It checks every field on the server, carries a nonce and a honeypot, and works with JavaScript turned off. Messages go to the site’s admin address — or, with one filter, to whatever CRM, webhook or form plugin you already use.",
+   "image": "creative-agency-block-theme-contact-form.jpg"
+  },
+  {
+   "type": "section",
+   "heading": "Six palettes, checked before release",
+   "text": "Azure is the design’s own palette; Violet, Coral, Emerald and Ink restyle it, and Midnight is a dark palette. Every one is measured against WCAG AA before the theme is built, in light mode and in dark, and a palette that fails is not written.",
+   "image": "creative-agency-block-theme-colour-palettes.jpg"
+  },
+  {
+   "type": "section",
+   "heading": "Dark mode the visitor controls",
+   "text": "The switch sits in the header, beside “Say hi”. It follows the reader’s system setting until they choose for themselves, and it lifts your palette rather than replacing it.",
+   "image": "creative-agency-block-theme-dark-mode.jpg"
+  },
+  {
+   "type": "features",
+   "heading": "What you get"
+  },
+  {
+   "type": "section",
+   "heading": "A journal, with a sidebar",
+   "text": "Studio notes, process write-ups, case notes. The blog, single posts, categories, tags, search and a 404 are all designed rather than inherited, with the design’s sidebar of search, categories, recent posts and tags.",
+   "image": "creative-agency-block-theme-blog.jpg"
+  },
+  {
+   "type": "faqs",
+   "heading": "Questions"
+  }
+ ],
+ "features": [
+  {
+   "heading": "A contact form without a plugin",
+   "icon": "fa fa-envelope",
+   "text": "Checked on the server, protected by a nonce and a honeypot, and it works with JavaScript turned off. One filter hands each message to a CRM, a webhook or a form plugin instead."
+  },
+  {
+   "heading": "A page for every project",
+   "icon": "fa fa-th-large",
+   "text": "Four case studies in a staggered grid, each opening a page with the client, the service, the year, the story and a link to the next project."
+  },
+  {
+   "heading": "Six palettes, five type pairings",
+   "icon": "fa fa-paint-brush",
+   "text": "Every palette is measured against WCAG AA before the theme is built, in light mode and in dark, and a palette that fails is not written."
+  },
+  {
+   "heading": "Dark mode",
+   "icon": "fa fa-moon-o",
+   "text": "A switch for the visitor, separate from the palette you chose. It follows the reader’s system setting until they choose, and lifts the palette rather than replacing it."
+  },
+  {
+   "heading": "Your form plugin, styled",
+   "icon": "fa fa-plug",
+   "text": "Contact Form 7, WPForms, Gravity Forms, Fluent Forms, Forminator and Ninja Forms take on the theme’s colours and spacing instead of looking like another website."
+  },
+  {
+   "heading": "WooCommerce ready",
+   "icon": "fa fa-shopping-cart",
+   "text": "Styled if you install WooCommerce, and it loads nothing at all if you do not."
+  },
+  {
+   "heading": "Only the motion the design has",
+   "icon": "fa fa-magic",
+   "text": "The header pins and turns black as you scroll, the figures count up, the studio film plays in a popup and the studio photos open in a lightbox. Visitors who ask for reduced motion see no counting."
+  },
+  {
+   "heading": "A whole site on activation",
+   "icon": "fa fa-file-text-o",
+   "text": "Home, About, Work with four project pages, Services, Blog and Contact are built as ordinary pages you can edit, with a menu that points at them. Nothing happens on a site that already has pages."
+  },
+  {
+   "heading": "Icons that follow the palette",
+   "icon": "fa fa-star-o",
+   "text": "Service cards and contact details carry Tabler icons drawn in the text colour, so they change with every palette and with dark mode."
+  }
+ ],
+ "faqs": [
+  {
+   "q": "Do I need a plugin?",
+   "a": "No. The contact form, dark mode and the starter pages are part of the theme, and it needs no page builder. WooCommerce is styled if you add it, and is not required."
+  },
+  {
+   "q": "What is the difference from the Elementor edition?",
+   "a": "The design is the same. This edition is a block theme: every page, the header, the footer and each section are edited in WordPress’s own Site Editor, with no plugins. The Elementor edition builds its sections with Elementor and the Creative Agency Companion plugin. For a new site, start with this one."
+  },
+  {
+   "q": "Where do the messages go?",
+   "a": "To the site’s admin email address by default; the <code>creative_agency_contact_email_to</code> filter sends them elsewhere. If you already use a CRM, a webhook or a form plugin, the <code>creative_agency_contact_handlers</code> filter hands each message to it instead, and the theme sends nothing of its own."
+  },
+  {
+   "q": "Which form plugins does it style?",
+   "a": "Contact Form 7, WPForms, Gravity Forms, Fluent Forms, Forminator and Ninja Forms are mapped onto the theme’s own colours and spacing."
+  },
+  {
+   "q": "How do I change the video?",
+   "a": "Select the round play button on the studio photo and change its link to any YouTube address. It opens in a popup, through youtube-nocookie.com. A link to anything else simply opens that page."
+  },
+  {
+   "q": "The logo is a letter in a blue square. How do I change it?",
+   "a": "The square shows the first letter of your site title, so renaming the site changes it. To use a logo instead, open the header in the Site Editor, select the square and choose an image."
+  },
+  {
+   "q": "Can I change the colours?",
+   "a": "Six palettes and five type pairings ship with the theme, each a one-click choice under Styles in the Site Editor. Every colour is also a palette entry you can edit there."
+  },
+  {
+   "q": "Can I turn off dark mode, the pinned header or the counting figures?",
+   "a": "Yes, each with one line in a child theme or a small plugin: <code>add_filter( 'creative_agency_enable_dark_mode', '__return_false' );</code>, <code>add_filter( 'creative_agency_sticky_header', '__return_false' );</code> and <code>add_filter( 'creative_agency_enable_scroll_animations', '__return_false' );</code>. Visitors who ask their system for reduced motion never see the counting either way."
+  },
+  {
+   "q": "Is it translation ready?",
+   "a": "Yes. Every string is translatable and <code>languages/creative-agency.pot</code> is included."
+  },
+  {
+   "q": "Does it check for updates?",
+   "a": "Yes, because it is distributed outside the WordPress.org theme directory. The check sends the theme, WordPress and PHP versions, the locale, whether the site is a multisite, and an identifier derived from the site’s address with the site’s own secret key, so it cannot be turned back into the address. The <code>creative_agency_check_for_updates</code> filter switches it off."
+  }
+ ],
+ "details": "<table style=\"width:100%;border-collapse:collapse;\"><tr><th style=\"text-align:left;padding:10px 18px 10px 0;border-bottom:1px solid #e3e8f2;font-weight:600;white-space:nowrap;vertical-align:top;\">Requires</th><td style=\"padding:10px 0;border-bottom:1px solid #e3e8f2;\">WordPress 6.6 or newer</td></tr><tr><th style=\"text-align:left;padding:10px 18px 10px 0;border-bottom:1px solid #e3e8f2;font-weight:600;white-space:nowrap;vertical-align:top;\">PHP</th><td style=\"padding:10px 0;border-bottom:1px solid #e3e8f2;\">7.4 or newer</td></tr><tr><th style=\"text-align:left;padding:10px 18px 10px 0;border-bottom:1px solid #e3e8f2;font-weight:600;white-space:nowrap;vertical-align:top;\">Tested up to</th><td style=\"padding:10px 0;border-bottom:1px solid #e3e8f2;\">WordPress 7.1</td></tr><tr><th style=\"text-align:left;padding:10px 18px 10px 0;border-bottom:1px solid #e3e8f2;font-weight:600;white-space:nowrap;vertical-align:top;\">Licence</th><td style=\"padding:10px 0;border-bottom:1px solid #e3e8f2;\">GNU General Public License v2 or later</td></tr><tr><th style=\"text-align:left;padding:10px 18px 10px 0;border-bottom:1px solid #e3e8f2;font-weight:600;white-space:nowrap;vertical-align:top;\">Patterns</th><td style=\"padding:10px 0;border-bottom:1px solid #e3e8f2;\">26 to insert (17 sections and 9 whole pages), plus 21 the templates and parts use</td></tr><tr><th style=\"text-align:left;padding:10px 18px 10px 0;border-bottom:1px solid #e3e8f2;font-weight:600;white-space:nowrap;vertical-align:top;\">Templates</th><td style=\"padding:10px 0;border-bottom:1px solid #e3e8f2;\">10, plus 3 template parts</td></tr><tr><th style=\"text-align:left;padding:10px 18px 10px 0;border-bottom:1px solid #e3e8f2;font-weight:600;white-space:nowrap;vertical-align:top;\">Starter pages</th><td style=\"padding:10px 0;border-bottom:1px solid #e3e8f2;\">10, built on activation, with a menu</td></tr><tr><th style=\"text-align:left;padding:10px 18px 10px 0;border-bottom:1px solid #e3e8f2;font-weight:600;white-space:nowrap;vertical-align:top;\">Styles</th><td style=\"padding:10px 0;border-bottom:1px solid #e3e8f2;\">6 colour palettes × 5 type pairings</td></tr><tr><th style=\"text-align:left;padding:10px 18px 10px 0;border-bottom:1px solid #e3e8f2;font-weight:600;white-space:nowrap;vertical-align:top;\">Fonts</th><td style=\"padding:10px 0;border-bottom:1px solid #e3e8f2;\">Poppins and DM Sans, self-hosted</td></tr><tr><th style=\"text-align:left;padding:10px 18px 10px 0;border-bottom:1px solid #e3e8f2;font-weight:600;white-space:nowrap;vertical-align:top;\">Icons</th><td style=\"padding:10px 0;border-bottom:1px solid #e3e8f2;\">Tabler Icons (MIT), drawn in the text colour</td></tr><tr><th style=\"text-align:left;padding:10px 18px 10px 0;border-bottom:1px solid #e3e8f2;font-weight:600;white-space:nowrap;vertical-align:top;\">Form plugins</th><td style=\"padding:10px 0;border-bottom:1px solid #e3e8f2;\">Contact Form 7, WPForms, Gravity Forms, Fluent Forms, Forminator, Ninja Forms</td></tr><tr><th style=\"text-align:left;padding:10px 18px 10px 0;border-bottom:1px solid #e3e8f2;font-weight:600;white-space:nowrap;vertical-align:top;\">Build step</th><td style=\"padding:10px 0;border-bottom:1px solid #e3e8f2;\">None — no npm, no SCSS</td></tr></table>"
+}
